@@ -1,0 +1,154 @@
+@import "tailwindcss";
+
+@font-face {
+  font-family: "dupincel";
+  src: url("/fonts/DupincelLargeTest-Bold.otf") format("opentype");
+}
+
+:root {
+  /* Paleta de Cores da Identidade Visual */
+  --yellow: #FFC700;
+  --gray: #383838;
+  --whiteice: #F4F4F3;
+  --background: #ffffff;
+  --foreground: #000000;
+  /* Adicionado: O texto precisa de uma cor padrão no tema claro */
+  --black: #000000;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Modo Escuro (Opcional) */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* =========================================
+   ESTILOS GERAIS E TIPOGRAFIA
+   ========================================= */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  /* Se você tiver a fonte Poppins instalada/importada depois, substitua o Arial por ela aqui */
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Aplicando a fonte elegante aos títulos para criar autoridade */
+h1,
+h2,
+h3,
+h4,
+.font-dupincel {
+  font-family: "dupincel", serif;
+  font-weight: normal;
+}
+
+/* =========================================
+   ESTILOS DA NAVBAR E MENU
+   ========================================= */
+.navbar {
+  background-color: var(--whiteice);
+  padding: 1rem 2rem;
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  /* Sombra suave para destacar do fundo */
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.nav-brand a {
+  text-decoration: none;
+  color: var(--black);
+}
+
+.nav-brand h1 {
+  font-size: 1.8rem;
+}
+
+.nav-menu {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-menu a {
+  text-decoration: none;
+  color: var(--gray);
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  /* Transição suave e moderna para o hover */
+}
+
+.nav-menu a:hover {
+  color: var(--yellow);
+}
+
+/* Esconde o botão hambúrguer no Desktop */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: var(--black);
+}
+
+/* =========================================
+  LÓGICA PARA O MOBILE E RESPONSIVIDADE
+========================================= */
+@media (max-width: 768px) {
+
+  /* Mostra o botão hambúrguer no celular */
+  .nav-toggle {
+    display: block;
+  }
+
+  /* Esconde e estiliza o menu lateral no celular */
+  .nav-menu {
+    display: none;
+    width: 100%;
+    background-color: var(--whiteice);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    flex-direction: column;
+    padding: 2rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-top: 1px solid rgba(0, 0, 0, 0.05);
+  }
+
+  /* Exibe o menu quando o React injeta a classe "active" */
+  .nav-menu.active {
+    display: flex;
+  }
+
+  .nav-menu li {
+    width: 100%;
+    text-align: center;
+    padding: 0.8rem 0;
+  }
+}
