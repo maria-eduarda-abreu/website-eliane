@@ -4,6 +4,14 @@
   font-family: "dupincel";
   src: url("/fonts/DupincelLargeTest-Bold.otf") format("opentype");
 }
+@font-face {
+  font-family: "Aileron-Light";
+  src: url("/fonts/Aileron-Light.otf") format("opentype");
+}
+@font-face {
+  font-family: "Aileron-black";
+  src: url("/fonts/Aileron-Black.otf") format("opentype");
+}
 
 :root {
   /* Paleta de Cores da Identidade Visual */
@@ -14,21 +22,6 @@
   --foreground: #000000;
   /* Adicionado: O texto precisa de uma cor padrão no tema claro */
   --black: #000000;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-/* Modo Escuro (Opcional) */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
 }
 
 /* =========================================
@@ -44,7 +37,7 @@ body {
   background: var(--background);
   color: var(--foreground);
   /* Se você tiver a fonte Poppins instalada/importada depois, substitua o Arial por ela aqui */
-  font-family: Arial, Helvetica, sans-serif;
+  
 }
 
 /* Aplicando a fonte elegante aos títulos para criar autoridade */
@@ -56,18 +49,21 @@ h4,
   font-family: "dupincel", serif;
   font-weight: normal;
 }
+.font-aileron-light {
+  font-family: "Aileron-Light", sans-serif;
+  font-weight: normal;
+}
 
 /* =========================================
-   ESTILOS DA NAVBAR E MENU
+   ESTILOS DA NAVBAR E MENU (DESKTOP)
    ========================================= */
 .navbar {
   background-color: var(--whiteice);
-  padding: 1rem 2rem;
+  padding: 1.5rem 2rem;
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  /* Sombra suave para destacar do fundo */
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
 }
 
 .nav-container {
@@ -78,13 +74,12 @@ h4,
   margin: 0 auto;
 }
 
-.nav-brand a {
-  text-decoration: none;
-  color: var(--black);
-}
-
-.nav-brand h1 {
-  font-size: 1.8rem;
+/* Tamanho da Logo no Desktop */
+.logo-img {
+  width: 100%;
+  max-width: 220px;
+  height: auto;
+  object-fit: contain;
 }
 
 .nav-menu {
@@ -96,59 +91,275 @@ h4,
 
 .nav-menu a {
   text-decoration: none;
-  color: var(--gray);
+  color: var(--black);
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 0.90rem;
   transition: color 0.3s ease;
-  /* Transição suave e moderna para o hover */
 }
 
 .nav-menu a:hover {
   color: var(--yellow);
 }
 
-/* Esconde o botão hambúrguer no Desktop */
-.nav-toggle {
-  display: none;
-  background: none;
-  border: none;
-  font-size: 1.5rem;
-  cursor: pointer;
-  color: var(--black);
+.nav-social-icons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-left: 2rem; /* Separa os ícones do resto do menu no desktop */
 }
 
 /* =========================================
-  LÓGICA PARA O MOBILE E RESPONSIVIDADE
-========================================= */
+   BOTÃO HAMBÚRGUER (Escondido no Desktop)
+   ========================================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100; /* Mantém o botão acima do menu lateral */
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--black);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito de transformar o Hambúrguer num "X" quando aberto */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+/* =========================================
+   LÓGICA PARA O MOBILE (Celular)
+   ========================================= */
 @media (max-width: 768px) {
+  /* Encolhe a Logo no celular */
+  .logo-img {
+    max-width: 100px;
+  }
 
-  /* Mostra o botão hambúrguer no celular */
+  /* Mostra o botão hambúrguer */
   .nav-toggle {
-    display: block;
-  }
-
-  /* Esconde e estiliza o menu lateral no celular */
-  .nav-menu {
-    display: none;
-    width: 100%;
-    background-color: var(--whiteice);
-    position: absolute;
-    top: 100%;
-    left: 0;
-    flex-direction: column;
-    padding: 2rem 0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-top: 1px solid rgba(0, 0, 0, 0.05);
-  }
-
-  /* Exibe o menu quando o React injeta a classe "active" */
-  .nav-menu.active {
     display: flex;
   }
 
-  .nav-menu li {
-    width: 100%;
-    text-align: center;
-    padding: 0.8rem 0;
+  /* Estiliza o menu */
+  .nav-menu {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 70%;
+    height: 100vh;
+    background-color: var(--background);
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-left: 2rem;
+    padding-top: 10rem;
+    transition: right 0.4s ease; 
+    box-shadow: -5px 0 15px rgba(0,0,0,0.1); 
+    z-index: 99;
   }
+
+  
+  .nav-menu.active {
+    right: 0;
+    
+  }
+
+  .nav-menu li {
+    margin: 0.2rem 0;
+  }
+
+  
+  .nav-social-icons {
+    margin-left: 0;
+    margin-top: 2rem;
+  }
+}
+/* =========================================
+   ESTILOS DO FOOTER (RODAPÉ)
+   ========================================= */
+.footer {
+  background-color: var(--background);
+  /* Uma linha bem suave no topo apenas para não misturar com a seção anterior */
+  border-top: 1px solid rgba(0,0,0,0.05); 
+  margin-top: 4rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+  gap: 2rem;
+}
+
+.footer-img {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  object-fit: contain;
+}
+
+.footer-address h3,
+.footer-contact h3 {
+  font-size: 1.1rem;
+  color: var(--black);
+  margin-bottom: 0.8rem;
+  font-weight: 700;
+  font-family: "Aileron-Light", serif;
+}
+
+.footer-address p,
+.footer-contact p {
+  color: var(--gray);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  font-family: "Aileron-Light", serif;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer-email {
+  display: block;
+  color: var(--black);
+  font-size: 0.95rem;
+  transition: color 0.3s ease;
+  font-family: "Aileron-Light", serif;
+}
+
+.footer-email:hover {
+  color: var(--yellow);
+}
+
+.footer-bottom {
+  background-color: var(--yellow);
+  padding: 1.2rem;
+  text-align: center;
+}
+
+.footer-bottom p {
+  color: var(--black);
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* =========================================
+   RESPONSIVIDADE DO FOOTER (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+  .footer-content {
+    flex-direction: column;
+    align-items: left;
+    text-align: left;
+    padding: 3rem 1.5rem;
+    gap: 3rem;
+  }
+
+  .footer-social-icons {
+    justify-content: left;
+  }
+}
+
+/* =========================================
+   ESTILOS GERAIS DE SEÇÃO
+   ========================================= */
+.section-padding { padding: 5rem 0; }
+.bg-light { background-color: var(--whiteice); }
+.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--black); }
+.subtitle { text-align: center; color: var(--yellow); font-weight: bold; letter-spacing: 2px; }
+
+/* =========================================
+   HERO SECTION & STATS
+   ========================================= */
+.hero-wrapper { background-color: var(--whiteice); padding-top: 2rem; }
+.hero-container { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.hero-image { flex: 1; display: flex; justify-content: center; }
+.hero-content { flex: 1; }
+.hero-quote { font-size: 3rem; line-height: 1.2; color: var(--gray); margin-bottom: 2rem; position: relative; }
+.quote-marks { color: var(--yellow); font-size: 4rem; position: absolute; top: -30px; left: -40px; }
+
+.btn-whatsapp {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background-color: #25D366; color: white; padding: 0.8rem 2rem;
+  border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem;
+}
+
+.hero-stats { background-color: var(--black); padding: 2rem 0; margin-top: 2rem; }
+.stats-container { display: flex; justify-content: space-around; text-align: center; color: var(--whiteice); }
+.stat-number { display: block; color: var(--yellow); font-size: 2.5rem; font-weight: bold; }
+
+/* =========================================
+   TIMELINE (SOBRE MIM)
+   ========================================= */
+.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+/* A linha central vertical */
+.timeline::after {
+  content: ''; position: absolute; width: 4px; background-color: var(--yellow);
+  top: 0; bottom: 0; left: 50%; margin-left: -2px;
+}
+.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
+.timeline-item.left { left: 0; text-align: right; }
+.timeline-item.right { left: 50%; }
+/* Os "nós" da timeline */
+.timeline-item::after {
+  content: ''; position: absolute; width: 20px; height: 20px;
+  background-color: white; border: 4px solid var(--yellow); border-radius: 50%;
+  top: 15px; z-index: 1;
+}
+.timeline-item.left::after { right: -10px; }
+.timeline-item.right::after { left: -10px; }
+.timeline-content { padding: 20px; background-color: var(--whiteice); border-radius: 8px; }
+.timeline-content h3 { color: var(--black); margin-bottom: 0.5rem; }
+
+/* =========================================
+   ESCRITÓRIO & FORMS
+   ========================================= */
+.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
+.service-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-bottom: 4px solid var(--yellow); }
+.office-area { text-align: center; margin-top: 4rem; }
+.office-card { background: var(--black); color: var(--whiteice); padding: 2rem; border-radius: 8px; max-width: 600px; margin: 0 auto; }
+.office-card h3 { color: var(--yellow); margin-bottom: 1rem; }
+
+.contact-form-container { max-width: 600px; margin: 0 auto; }
+.form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
+.form-group label { margin-bottom: 0.5rem; font-weight: bold; }
+.form-group input, .form-group textarea { padding: 1rem; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
+.btn-submit { background-color: var(--yellow); color: var(--black); border: none; padding: 1rem 2rem; font-weight: bold; font-size: 1.1rem; cursor: pointer; border-radius: 4px; width: 100%; }
+
+/* =========================================
+   MOBILE RESPONSIVO
+   ========================================= */
+@media (max-width: 768px) {
+  .hero-container { flex-direction: column; text-align: center; }
+  .hero-quote { font-size: 2rem; }
+  .quote-marks { display: none; } /* Oculta as aspas no mobile para limpar o visual */
+  .stats-container { flex-direction: column; gap: 2rem; }
+  
+  /* Ajuste da Timeline para o Mobile (linha vai para a esquerda) */
+  .timeline::after { left: 20px; }
+  .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left; }
+  .timeline-item.left, .timeline-item.right { left: 0; }
+  .timeline-item.left::after, .timeline-item.right::after { left: 10px; }
 }
