@@ -57,17 +57,20 @@ export default function Navbar() {
                         <a href="https://wa.me/5531900000000" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
                             <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} />
                         </a>
-                        <a href="https://instagram.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
-                        </a>
                         <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
                             <Image src="/img/icon/email.png" alt="Email" width={24} height={24} />
                         </a>
-                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
-                            <Image src="/img/icon/youtube.png" alt="Email" width={24} height={24} />
+                        <a href="https://instagram.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
                         </a>
-                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
-                            <Image src="/img/icon/facebook.png" alt="Email" width={24} height={24} />
+                        <a href="https://youtube.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/youtube.png" alt="YouTube" width={24} height={24} />
+                        </a>
+                        <a href="https://facebook.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/facebook.png" alt="Facebook" width={24} height={24} />
+                        </a>
+                        <a href="https://tiktok.com/@dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/tiktok.png" alt="TikTok" width={24} height={24} />
                         </a>
                     </li>
                 </ul>

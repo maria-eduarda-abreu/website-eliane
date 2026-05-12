@@ -46,6 +46,9 @@ export default function Footer() {
             <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
               <Image src="/img/icon/facebook.png" alt="Facebook" width={24} height={24} />
             </a>
+            <a href="https://tiktok.com/@dra.elianesantiago" target="_blank" rel="noopener noreferrer">
+              <Image src="/img/icon/tiktok.png" alt="TikTok" width={24} height={24} />
+            </a>
           </div>
           <a href="mailto:contatoelianesantiago@gmail.com" className="footer-email">
             contato.draelianesantiago@gmail.com

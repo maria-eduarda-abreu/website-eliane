@@ -4,10 +4,12 @@
   font-family: "dupincel";
   src: url("/fonts/DupincelLargeTest-Bold.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Aileron-Light";
   src: url("/fonts/Aileron-Light.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Aileron-black";
   src: url("/fonts/Aileron-Black.otf") format("opentype");
@@ -32,12 +34,20 @@
   margin: 0;
   padding: 0;
 }
+.container {
+  width: 100%;
+  max-width: 1200px; /* Limita a largura do conteúdo (ajuste se quiser mais largo ou estreito) */
+  margin: 0 auto;    /* A MÁGICA AQUI: O 'auto' nas laterais empurra a div para o centro exato */
+  padding: 0 20px;   /* Garante que o texto não cole nas bordas em telas de celular */
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
+  align-items: center;
+  justify-content: center;
   /* Se você tiver a fonte Poppins instalada/importada depois, substitua o Arial por ela aqui */
-  
+
 }
 
 /* Aplicando a fonte elegante aos títulos para criar autoridade */
@@ -47,8 +57,9 @@ h3,
 h4,
 .font-dupincel {
   font-family: "dupincel", serif;
-  font-weight: normal;
+  font-weight: bold;
 }
+
 .font-aileron-light {
   font-family: "Aileron-Light", sans-serif;
   font-weight: normal;
@@ -63,7 +74,7 @@ h4,
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -105,7 +116,8 @@ h4,
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-left: 2rem; /* Separa os ícones do resto do menu no desktop */
+  margin-left: 2rem;
+  /* Separa os ícones do resto do menu no desktop */
 }
 
 /* =========================================
@@ -120,7 +132,8 @@ h4,
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 100; /* Mantém o botão acima do menu lateral */
+  z-index: 100;
+  /* Mantém o botão acima do menu lateral */
 }
 
 .nav-toggle span {
@@ -136,9 +149,11 @@ h4,
 .nav-toggle.active span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
+
 .nav-toggle.active span:nth-child(2) {
   opacity: 0;
 }
+
 .nav-toggle.active span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
@@ -147,6 +162,7 @@ h4,
    LÓGICA PARA O MOBILE (Celular)
    ========================================= */
 @media (max-width: 768px) {
+
   /* Encolhe a Logo no celular */
   .logo-img {
     max-width: 150px;
@@ -170,34 +186,35 @@ h4,
     align-items: flex-start;
     padding-left: 2rem;
     padding-top: 10rem;
-    transition: right 0.4s ease; 
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1); 
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     z-index: 99;
   }
 
-  
+
   .nav-menu.active {
     right: 0;
-    
+
   }
 
   .nav-menu li {
     margin: 0.2rem 0;
   }
 
-  
+
   .nav-social-icons {
     margin-left: 0;
     margin-top: 2rem;
   }
 }
+
 /* =========================================
    ESTILOS DO FOOTER (RODAPÉ)
    ========================================= */
 .footer {
   background-color: var(--background);
   /* Uma linha bem suave no topo apenas para não misturar com a seção anterior */
-  border-top: 1px solid rgba(0,0,0,0.05); 
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   margin-top: 4rem;
 }
 
@@ -280,12 +297,13 @@ h4,
   .footer-social-icons {
     justify-content: left;
   }
+
   .footer-img {
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  object-fit: contain;
-}
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 /* =========================================
@@ -294,15 +312,18 @@ h4,
 .section-padding {
   padding: 5rem 0;
 }
+
 .bg-light {
   background-color: var(--whiteice);
 }
+
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
   color: var(--black);
 }
+
 .subtitle {
   text-align: center;
   color: var(--yellow);
@@ -311,89 +332,316 @@ h4,
 }
 
 /* =========================================
-   HERO SECTION & STATS
+   HERO SECTION & STATS (Desktop)
    ========================================= */
-.hero-wrapper { background-color: var(--whiteice); padding-top: 2rem; }
-.hero-container { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-.hero-image { flex: 1; display: flex; justify-content: center; }
-.hero-content { flex: 1; }
-.hero-quote { font-size: 3rem; line-height: 1.2; color: var(--gray); margin-bottom: 2rem; position: relative; }
-.quote-marks { color: var(--yellow); font-size: 4rem; position: absolute; top: -30px; left: -40px; }
+.hero-wrapper {
+  background-color: var(--whiteice);
+  padding-top: 0; /* A foto vai encostar na base */
+  overflow: hidden;
+  width: 100%;
+}
+
+.hero-container {
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  max-width: 1200px;
+  margin: 0 auto;
+  min-height: 500px;
+}
+
+.hero-image {
+  flex: 1;
+  display: flex;
+  align-items: flex-end; /* Encosta a foto embaixo */
+  justify-content: flex-start;
+  display: block;
+}
+
+.hero-image img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  display: block;
+}
+.hero-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 4rem 0;
+  position: relative;
+}
+
+.hero-quote {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  color: var(--gray);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+.quote-marks {
+  color: var(--yellow);
+  font-size: 7rem;
+  position: absolute;
+  top: -50px;
+  left: -40px;
+  font-family: "Aileron-black", sans-serif;
+  z-index: 1;
+  opacity: 0.8;
+}
+
+.linha-vertical {
+  border-left: 1px solid #333; /* Cria a linha (espessura, estilo, cor) */
+  padding-left: 15px;           /* Espaço entre a linha e o texto */
+  margin-left: 10px;            /* Espaço antes da linha (opcional) */
+  line-height: 1.4;             /* Melhora o espaçamento entre linhas */
+  font-family: sans-serif;      /* Estilo da fonte */
+  color: #555;                /* Cor do texto */
+}
 
 .btn-whatsapp {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background-color: #1fcc5f; color: white; padding: 0.8rem 2rem;
-  border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: #25D366;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.1rem;
+  width: fit-content;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
 }
 
+/* Faixa de Estatísticas */
 .hero-stats {
   background-color: var(--black);
-  padding: 2rem 0;
-  margin-top: 2rem;
+  padding: 3.5rem 0;
+  width: 100%;
 }
+
 .stats-container {
   display: flex;
   justify-content: space-around;
-  text-align: center;
-  color: var(--whiteice);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
+
+.stat-item {
+  text-align: center;
+}
+
 .stat-number {
   display: block;
   color: var(--yellow);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
+  font-family: "Aileron-black", sans-serif;
+  line-height: 1;
 }
 
+.stat-label {
+  color: var(--whiteice);
+  font-size: 1rem;
+  font-family: "Aileron-", sans-serif;
+  text-transform: lowercase;
+}
 /* =========================================
    TIMELINE (SOBRE MIM)
    ========================================= */
-.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* A linha central vertical */
 .timeline::after {
-  content: ''; position: absolute; width: 4px; background-color: var(--yellow);
-  top: 0; bottom: 0; left: 50%; margin-left: -2px;
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--yellow);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
 }
-.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
-.timeline-item.left { left: 0; text-align: right; }
-.timeline-item.right { left: 50%; }
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
 /* Os "nós" da timeline */
 .timeline-item::after {
-  content: ''; position: absolute; width: 20px; height: 20px;
-  background-color: white; border: 4px solid var(--yellow); border-radius: 50%;
-  top: 15px; z-index: 1;
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid var(--yellow);
+  border-radius: 50%;
+  top: 15px;
+  z-index: 1;
 }
-.timeline-item.left::after { right: -10px; }
-.timeline-item.right::after { left: -10px; }
-.timeline-content { padding: 20px; background-color: var(--whiteice); border-radius: 8px; }
-.timeline-content h3 { color: var(--black); margin-bottom: 0.5rem; }
+
+.timeline-item.left::after {
+  right: -10px;
+}
+
+.timeline-item.right::after {
+  left: -10px;
+}
+
+.timeline-content {
+  padding: 20px;
+  background-color: var(--whiteice);
+  border-radius: 8px;
+}
+
+.timeline-content h3 {
+  color: var(--black);
+  margin-bottom: 0.5rem;
+}
 
 /* =========================================
    ESCRITÓRIO & FORMS
    ========================================= */
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
-.service-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-bottom: 4px solid var(--yellow); }
-.office-area { text-align: center; margin-top: 4rem; }
-.office-card { background: var(--black); color: var(--whiteice); padding: 2rem; border-radius: 8px; max-width: 600px; margin: 0 auto; }
-.office-card h3 { color: var(--yellow); margin-bottom: 1rem; }
+.cards-grid {
+  display: flex;
+  justify-content: center; /* Regra que centraliza os cartões */
+  gap: 2rem;               /* Espaço entre os cartões */
+  flex-wrap: wrap;         /* Quebra a linha em telas menores */
+  margin-bottom: 4rem;
+}
 
-.contact-form-container { max-width: 600px; margin: 0 auto; }
-.form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
-.form-group label { margin-bottom: 0.5rem; font-weight: bold; }
-.form-group input, .form-group textarea { padding: 1rem; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
-.btn-submit { background-color: var(--yellow); color: var(--black); border: none; padding: 1rem 2rem; font-weight: bold; font-size: 1.1rem; cursor: pointer; border-radius: 4px; width: 100%; }
+.service-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  border-bottom: 4px solid var(--yellow);
+  flex: 1 1 300px;  /* Permite que o cartão se ajuste, com base de 300px */
+  max-width: 350px; /* Impede que eles fiquem largos demais em telas grandes */
+}
+
+.office-area {
+  text-align: center;
+  margin-top: 4rem;
+}
+
+.office-card {
+  background: var(--black);
+  color: var(--whiteice);
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.office-card h3 {
+  color: var(--yellow);
+  margin-bottom: 1rem;
+}
+
+.contact-form-container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-family: inherit;
+}
+
+.btn-submit {
+  background-color: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 1rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  width: 100%;
+}
 
 /* =========================================
-   MOBILE RESPONSIVO
+   RESPONSIVIDADE (Mobile)
    ========================================= */
 @media (max-width: 768px) {
-  .hero-container { flex-direction: column; text-align: center; }
-  .hero-quote { font-size: 2rem; }
-  .quote-marks { display: none; } /* Oculta as aspas no mobile para limpar o visual */
-  .stats-container { flex-direction: column; gap: 2rem; }
-  
-  /* Ajuste da Timeline para o Mobile (linha vai para a esquerda) */
-  .timeline::after { left: 20px; }
-  .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left; }
-  .timeline-item.left, .timeline-item.right { left: 0; }
-  .timeline-item.left::after, .timeline-item.right::after { left: 10px; }
+  .hero-container {
+    flex-direction: column;
+    padding: 2rem 1.5rem 0; /* Mantém o 0 no final para a foto colar na base */
+  }
+
+  .hero-content {
+    order: 1; /* TEXTO VAI PARA O TOPO */
+    padding: 1rem 0 2rem 0;
+    align-items: flex-start; /* Alinha os botões à esquerda */
+    text-align: left;
+  }
+
+  .hero-quote {
+    font-size: 2.2rem; /* Reduz a fonte do título */
+    padding-left: 3rem; /* Empurra o texto para não ficar em cima das aspas */
+  }
+
+  .quote-marks {
+    font-size: 5.5rem; /* Reduz o tamanho da aspa */
+    top: -15px; /* Sobe um pouco a aspa */
+    left: -10px; /* Gruda a aspa na margem esquerda */
+  }
+
+  .hero-image {
+    order: 2; /* FOTO VAI PARA BAIXO */
+    justify-content: flex-start; /* Alinha a imagem à esquerda, como no print */
+    width: 100%;
+  }
+
+  .hero-image img {
+    max-width: 90%; /* Deixa a imagem num tamanho agradável no celular */
+    margin-bottom: -10px; /* Garante que ela colou na faixa preta de baixo */
+  }
+
+  /* Ajuste dos Status para ficarem em coluna */
+  .hero-stats {
+    padding: 3rem 1.5rem;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 3rem;
+  }
 }
+/* Garanta que esta chave final } é a que encerra o bloco @media! */
