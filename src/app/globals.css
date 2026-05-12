@@ -58,7 +58,7 @@ h4,
    ESTILOS DA NAVBAR E MENU (DESKTOP)
    ========================================= */
 .navbar {
-  background-color: var(--whiteice);
+  background-color: var(--background);
   padding: 1.5rem 2rem;
   position: sticky;
   top: 0;
@@ -149,7 +149,7 @@ h4,
 @media (max-width: 768px) {
   /* Encolhe a Logo no celular */
   .logo-img {
-    max-width: 100px;
+    max-width: 150px;
   }
 
   /* Mostra o botão hambúrguer */
@@ -213,7 +213,7 @@ h4,
 
 .footer-img {
   width: 100%;
-  max-width: 160px;
+  max-width: 200px;
   height: auto;
   object-fit: contain;
 }
@@ -280,15 +280,35 @@ h4,
   .footer-social-icons {
     justify-content: left;
   }
+  .footer-img {
+  width: 100%;
+  max-width: 160px;
+  height: auto;
+  object-fit: contain;
+}
 }
 
 /* =========================================
    ESTILOS GERAIS DE SEÇÃO
    ========================================= */
-.section-padding { padding: 5rem 0; }
-.bg-light { background-color: var(--whiteice); }
-.section-title { text-align: center; font-size: 2.5rem; margin-bottom: 3rem; color: var(--black); }
-.subtitle { text-align: center; color: var(--yellow); font-weight: bold; letter-spacing: 2px; }
+.section-padding {
+  padding: 5rem 0;
+}
+.bg-light {
+  background-color: var(--whiteice);
+}
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--black);
+}
+.subtitle {
+  text-align: center;
+  color: var(--yellow);
+  font-weight: bold;
+  letter-spacing: 2px;
+}
 
 /* =========================================
    HERO SECTION & STATS
@@ -302,13 +322,27 @@ h4,
 
 .btn-whatsapp {
   display: inline-flex; align-items: center; gap: 0.5rem;
-  background-color: #25D366; color: white; padding: 0.8rem 2rem;
+  background-color: #1fcc5f; color: white; padding: 0.8rem 2rem;
   border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem;
 }
 
-.hero-stats { background-color: var(--black); padding: 2rem 0; margin-top: 2rem; }
-.stats-container { display: flex; justify-content: space-around; text-align: center; color: var(--whiteice); }
-.stat-number { display: block; color: var(--yellow); font-size: 2.5rem; font-weight: bold; }
+.hero-stats {
+  background-color: var(--black);
+  padding: 2rem 0;
+  margin-top: 2rem;
+}
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  color: var(--whiteice);
+}
+.stat-number {
+  display: block;
+  color: var(--yellow);
+  font-size: 2.5rem;
+  font-weight: bold;
+}
 
 /* =========================================
    TIMELINE (SOBRE MIM)

@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div className="nav-brand">
                     <Link href="/" onClick={fecharMenu}>
                         <Image
-                            src="/img/logo.png"
+                            src="/img/logo2.png"
                             alt="Logo Dra. Eliane Santiago"
                             width={250}
                             height={70}

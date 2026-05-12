@@ -8,7 +8,7 @@ export default function HeroSection() {
         <div className="hero-image">
            {/* Substitua foto-eliane.png pela foto real recortada sem fundo na pasta public/img/ */}
           <Image 
-            src="/img/fotos-eliane/fotoperfil.png" 
+            src="/img/fotos-eliane/foto5.png" 
             alt="Dra. Eliane Santiago" 
             width={500} 
             height={600} 
@@ -23,9 +23,9 @@ export default function HeroSection() {
             <span className="quote-marks">"</span>
             Defender direitos é mais do que profissão, é missão de vida.
           </h2>
-          <a href="https://wa.me/5531900000000" target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
+          <a href="https://wa.me/553199918-4087" target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
             {/* Ícone do WhatsApp ao lado do texto */}
-            <Image src="/img/whatsapp.png" alt="WhatsApp" width={20} height={20} />
+            <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={20} height={20} />
             Whatsapp
           </a>
         </div>
@@ -35,12 +35,12 @@ export default function HeroSection() {
       <div className="hero-stats">
         <div className="container stats-container">
           <div className="stat-item">
-            <span className="stat-number">+ 33</span>
-            <span className="stat-label">anos de<br/>experiência</span>
+            <span className="stat-number">+ 33 anos</span>
+            <span className="stat-label">de experiência</span>
           </div>
           <div className="stat-item">
-            <span className="stat-number">+10.000</span>
-            <span className="stat-label">clientes</span>
+            <span className="stat-number">+10.000 anos</span>
+            <span className="stat-label"> de clientes</span>
           </div>
           <div className="stat-item">
             <span className="stat-number">+10.000</span>
