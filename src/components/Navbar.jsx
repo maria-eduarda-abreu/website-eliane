@@ -2,17 +2,15 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function Navbar() {
-    // Estado para controlar se o menu mobile está aberto ou fechado
     const [menuAberto, setMenuAberto] = useState(false);
 
-    // Função para alternar o estado do menu (abrir/fechar)
     const toggleMenu = () => {
         setMenuAberto(!menuAberto);
     };
 
-    // Função para garantir que o menu feche ao clicar em um link
     const fecharMenu = () => {
         setMenuAberto(false);
     };
@@ -21,15 +19,21 @@ export default function Navbar() {
         <nav className="navbar">
             <div className="container nav-container">
 
-                {/* Logo / Brand da Advogada */}
+                {/* Logo */}
                 <div className="nav-brand">
                     <Link href="/" onClick={fecharMenu}>
-                        <h1>Dra. Eliane Santiago</h1>
+                        <Image
+                            src="/img/logo2.png"
+                            alt="Logo Dra. Eliane Santiago"
+                            width={250}
+                            height={70}
+                            priority
+                            className="logo-img" /* Classe importante para ajustar o tamanho */
+                        />
                     </Link>
                 </div>
 
-                {/* Botão Hambúrguer para Mobile */}
-                {/* A classe 'active' pode ser usada no seu CSS para animar o 'X' */}
+                {/* Botão Hambúrguer (Mobile) */}
                 <button
                     className={`nav-toggle ${menuAberto ? 'active' : ''}`}
                     onClick={toggleMenu}
@@ -40,52 +44,30 @@ export default function Navbar() {
                     <span></span>
                 </button>
 
-                {/* Lista de Navegação */}
-                {/* Se menuAberto for true, adiciona a classe 'active' para exibir no mobile */}
+                {/* Menu de Navegação */}
                 <ul className={`nav-menu ${menuAberto ? 'active' : ''}`}>
+                    <li><Link href="/#inicio" onClick={fecharMenu}>INÍCIO</Link></li>
+                    <li><Link href="/#sobre" onClick={fecharMenu}>SOBRE MIM</Link></li>
+                    <li><Link href="/#escritorio" onClick={fecharMenu}>ESCRITÓRIO</Link></li>
+                    <li><Link href="/acervo" onClick={fecharMenu}>ACERVO</Link></li>
+                    <li><Link href="/#contato" onClick={fecharMenu}>CONTATO</Link></li>
 
-                    {/* Links da Home (One-Page) */}
-                    <li>
-                        <Link href="/#inicio" onClick={fecharMenu}>
-                            Início
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/#sobre" onClick={fecharMenu}>
-                            Sobre Mim
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href="/#escritorio" onClick={fecharMenu}>
-                            Escritório
-                        </Link>
-                    </li>
-
-                    {/* Link para a página isolada */}
-                    <li>
-                        <Link href="/acervo" onClick={fecharMenu}>
-                            Acervo
-                        </Link>
-                    </li>
-
-                    {/* Link para a seção de contato na Home */}
-                    <li>
-                        <Link href="/#contato" onClick={fecharMenu}>
-                            Contato
-                        </Link>
-                    </li>
-
-                    {/* Opcional: Ícones de redes sociais no menu (como no seu design PDF) */}
+                    {/* Ícones das Redes Sociais */}
                     <li className="nav-social-icons">
-                        {/* Substitua os links pelos reais da Dra. Eliane */}
                         <a href="https://wa.me/5531900000000" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            📱 {/* Substitua por um ícone SVG ou FontAwesome */}
+                            <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} />
                         </a>
                         <a href="https://instagram.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            📸 {/* Substitua por um ícone SVG ou FontAwesome */}
+                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
                         </a>
                         <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
-                            ✉️ {/* Substitua por um ícone SVG ou FontAwesome */}
+                            <Image src="/img/icon/email.png" alt="Email" width={24} height={24} />
+                        </a>
+                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
+                            <Image src="/img/icon/youtube.png" alt="Email" width={24} height={24} />
+                        </a>
+                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
+                            <Image src="/img/icon/facebook.png" alt="Email" width={24} height={24} />
                         </a>
                     </li>
                 </ul>

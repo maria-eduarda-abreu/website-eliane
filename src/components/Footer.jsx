@@ -1,36 +1,63 @@
+import Image from 'next/image';
 import Link from 'next/link';
 
 export default function Footer() {
   return (
-    <footer className="footer" style={{ backgroundColor: 'var(--black)', color: 'var(--whiteice)', padding: '2rem 0', marginTop: '4rem' }}>
-      <div className="container footer-content" style={{ display: 'flex', justifyContent: 'space-between', flexWrap: 'wrap', gap: '2rem' }}>
-        
-        <div className="footer-section">
-          <h4 style={{ color: 'var(--yellow)', marginBottom: '1rem' }} className="font-dupincel">Dra. Eliane Santiago</h4>
-          <p>Advocacia de Excelência</p>
+    <footer className="footer">
+      <div className="container footer-content">
+
+        {/* Coluna 1: Logo */}
+        <div className="footer-logo">
+          <Link href="/#inicio">
+            <Image
+              src="/img/logo2.png"
+              alt="Logo Dra. Eliane Santiago"
+              width={200}
+              height={60}
+              className="footer-img"
+            />
+          </Link>
         </div>
 
-        <div className="footer-section">
-          <h4 style={{ color: 'var(--yellow)', marginBottom: '1rem' }}>Páginas</h4>
-          <ul style={{ listStyle: 'none', padding: 0 }}>
-            <li><Link href="/#inicio" style={{ color: 'var(--whiteice)', textDecoration: 'none' }}>Início</Link></li>
-            <li><Link href="/#sobre" style={{ color: 'var(--whiteice)', textDecoration: 'none' }}>Sobre</Link></li>
-            <li><Link href="/#escritorio" style={{ color: 'var(--whiteice)', textDecoration: 'none' }}>Escritório</Link></li>
-            <li><Link href="/acervo" style={{ color: 'var(--whiteice)', textDecoration: 'none' }}>Acervo</Link></li>
-            <li><Link href="/#contato" style={{ color: 'var(--whiteice)', textDecoration: 'none' }}>Contato</Link></li>
-          </ul>
+        {/* Coluna 2: Localização */}
+        <div className="footer-address">
+          <h3>Ribeirão das Neves / MG</h3>
+          <p>Av. Denise Cristina da Rocha, 1542 - São Januário (Justinópolis)</p>
+          <p>Ribeirão das Neves - MG, 33900-702</p>
         </div>
 
-        <div className="footer-section">
-          <h4 style={{ color: 'var(--yellow)', marginBottom: '1rem' }}>Contato Rápido</h4>
-          <p>Email: contatoelianesantiago@gmail.com</p>
-          <p>Telefone: (31) 9 0000-0000</p>
+        {/* Coluna 3: Redes Sociais e Contatos */}
+        <div className="footer-contact">
+          <h3>Redes Sociais</h3>
+          <div className="footer-social-icons">
+            <a href="https://wa.me/5531900000000" target="_blank" rel="noopener noreferrer">
+              {/* Substitua pelos caminhos dos seus ícones se tiverem nomes diferentes */}
+              <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} />
+            </a>
+            <a href="https://instagram.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer">
+              <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
+            </a>
+            <a href="mailto:contatoelianesantiago@gmail.com">
+              <Image src="/img/icon/email.png" alt="Email" width={24} height={24} />
+            </a>
+            <a href="https://youtube.com.br" target="_blank" rel="noopener noreferrer">
+              <Image src="/img/icon/youtube.png" alt="Youtube" width={24} height={24} />
+            </a>
+            <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
+              <Image src="/img/icon/facebook.png" alt="Facebook" width={24} height={24} />
+            </a>
+          </div>
+          <a href="mailto:contatoelianesantiago@gmail.com" className="footer-email">
+            contato.draelianesantiago@gmail.com
+          </a>
+          <p>(31) 9 9918-4087</p>
         </div>
 
       </div>
-      
-      <div className="footer-bottom" style={{ textAlign: 'center', marginTop: '2rem', paddingTop: '1rem', borderTop: '1px solid var(--gray)' }}>
-        <p>&copy; 2026 Dra. Eliane Santiago. Todos os direitos reservados. | OAB/MG XXXXX</p>
+
+      {/* Faixa Amarela Inferior */}
+      <div className="footer-bottom">
+        <p>Copyright &copy; 2026 Dra. Eliane Santiago - Todos os direitos reservados</p>
       </div>
     </footer>
   );
