@@ -19,7 +19,7 @@
   /* Paleta de Cores da Identidade Visual */
   --yellow: #FFC700;
   --gray: #383838;
-  --whiteice: #F4F4F3;
+  --whiteice: #F8FAFD;
   --background: #ffffff;
   --foreground: #000000;
   /* Adicionado: O texto precisa de uma cor padrão no tema claro */
@@ -355,13 +355,12 @@ h4,
   display: flex;
   align-items: flex-end; /* Encosta a foto embaixo */
   justify-content: flex-start;
-  display: block;
+  
 }
 
 .hero-image img {
   max-width: 100%;
   height: auto;
-  display: block;
   display: block;
 }
 .hero-content {
@@ -454,7 +453,7 @@ h4,
 }
 /* =========================================
    TIMELINE (SOBRE MIM)
-   ========================================= */
+========================================= */
 .timeline {
   position: relative;
   max-width: 800px;
@@ -520,80 +519,127 @@ h4,
   margin-bottom: 0.5rem;
 }
 
-/* =========================================
-   ESCRITÓRIO & FORMS
-   ========================================= */
-.cards-grid {
+.office-section {
   display: flex;
-  justify-content: center; /* Regra que centraliza os cartões */
-  gap: 2rem;               /* Espaço entre os cartões */
-  flex-wrap: wrap;         /* Quebra a linha em telas menores */
-  margin-bottom: 4rem;
-}
-
-.service-card {
-  background: white;
-  padding: 2rem;
-  border-radius: 8px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-  border-bottom: 4px solid var(--yellow);
-  flex: 1 1 300px;  /* Permite que o cartão se ajuste, com base de 300px */
-  max-width: 350px; /* Impede que eles fiquem largos demais em telas grandes */
-}
-
-.office-area {
-  text-align: center;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 80px;
   margin-top: 4rem;
 }
 
-.office-card {
-  background: var(--black);
-  color: var(--whiteice);
-  padding: 2rem;
-  border-radius: 8px;
-  max-width: 600px;
-  margin: 0 auto;
+.office-gallery {
+  display: flex;
+  gap: 15px;
+  flex: 1;
 }
 
-.office-card h3 {
-  color: var(--yellow);
-  margin-bottom: 1rem;
-}
-
-.contact-form-container {
-  max-width: 600px;
-  margin: 0 auto;
-}
-
-.form-group {
-  margin-bottom: 1.5rem;
+.gallery-right-column {
   display: flex;
   flex-direction: column;
+  gap: 15px;
 }
 
-.form-group label {
-  margin-bottom: 0.5rem;
-  font-weight: bold;
+/* Regras das imagens da galeria */
+.gallery-img {
+  border-radius: 20px;
+  object-fit: cover;
 }
 
-.form-group input,
-.form-group textarea {
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  font-family: inherit;
+.gallery-img.tall {
+  width: 200px;
+  height: 350px;
 }
 
-.btn-submit {
+.gallery-img.top {
+  width: 250px;
+  height: 200px;
+}
+
+.gallery-img.bottom {
+  width: 250px;
+  height: 135px;
+}
+
+.office-info {
+  flex: 1;
+}
+
+.address-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.location-icon {
   background-color: var(--yellow);
-  color: var(--black);
-  border: none;
-  padding: 1rem 2rem;
-  font-weight: bold;
-  font-size: 1.1rem;
-  cursor: pointer;
-  border-radius: 4px;
+  color: var(--whiteice);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+/* =========================================
+   PARTE 2: ESPECIALIDADES (CARDS COM FOTO)
+   ========================================= */
+.cards-grid {
+  display: flex;             /* Transforma a div em um contêiner flexível (coloca lado a lado) */
+  justify-content: center;   /* Centraliza os três blocos no meio da tela */
+  gap: 30px;                 /* Espaçamento entre os cartões */
+  flex-wrap: wrap;           /* Permite que eles voltem a empilhar no celular */
+  margin-bottom: 4rem;       /* Dá um respiro embaixo da seção */
+  width: 100%;               /* Garante que ocupe o espaço inteiro para centralizar direito */
+}
+.specialties-header {
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+/* O "Pulo do gato" para os cards ficarem do tamanho certo */
+.specialty-image-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border-radius: 25px;
+  overflow: hidden; 
+  box-shadow: 8px 8px 0px #FDF0D5; /* Sombra amarelinha do design */
+}
+
+/* Faz a imagem de fundo preencher o card */
+.specialty-bg {
   width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Gradiente escuro embaixo para o texto branco ficar legível */
+.specialty-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  z-index: 2;
+}
+
+/* Título branco em cima da foto */
+.specialty-title {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  color: white;
+  z-index: 3;
+  font-size: 1.2rem;
+  font-family: 'Aileron-black', sans-serif;
+  line-height: 1.2;
 }
 
 /* =========================================
@@ -643,5 +689,219 @@ h4,
     flex-direction: column;
     gap: 3rem;
   }
+  /* Cole isso dentro do seu @media (max-width: 768px) existente */
+  .office-section {
+    flex-direction: column;
+  }
+  .office-info {
+    order: 1;
+    
+  }
+  
+  .office-gallery {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .gallery-img.tall, 
+  .gallery-img.top, 
+  .gallery-img.bottom {
+    width: 100%; 
+    height: auto;
+  }
+  .contact-layout {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .contact-form-column {
+    max-width: 100%;
+  }
+  /* =========================================
+     TIMELINE (SOBRE MIM) - MOBILE
+  ========================================= */
+  
+  /* 1. Move a linha central amarela para a esquerda */
+  .timeline::after {
+    left: 20px; 
+  }
+
+  /* 2. Faz todos os blocos ocuparem 100% da largura */
+  .timeline-item {
+    width: 100%; 
+    padding-left: 60px; /* Cria espaço à esquerda para a foto não colar na linha */
+    padding-right: 15px;
+  }
+
+  /* 3. Tira o deslocamento e alinha o texto de todos para a esquerda */
+  .timeline-item.left, 
+  .timeline-item.right {
+    left: 0; 
+    text-align: left; 
+  }
+
+  /* 4. Move as bolinhas (nós) para ficarem em cima da linha na nova posição */
+  .timeline-item.left::after, 
+  .timeline-item.right::after {
+    left: 10px; 
+  }
+
+  /* 5. Garante que as fotos dentro da timeline também fiquem responsivas */
+  .timeline-image {
+    width: 100%;
+    max-width: 250px; /* Evita que a foto fique gigante no tablet */
+    height: auto;
+    margin-bottom: 15px; /* Dá um respiro entre a foto e o título */
+  }
+  
+  /* Se você estiver usando flexbox nos itens, isso garante que empilhem direito no mobile */
+  .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  /* =========================================
+     ESCRITÓRIO - INVERSÃO NO MOBILE
+     ========================================= */
+  .office-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .office-info {
+    order: 1; /* Força o bloco de texto a vir primeiro */
+    margin-bottom: 2.5rem; /* Dá um respiro entre o endereço e as fotos que vêm logo abaixo */
+    text-align: center; /* Opcional: Centraliza o texto no celular para ficar mais harmônico */
+  }
+
+  .office-gallery {
+    order: 2; /* Força a galeria de fotos a vir depois */
+    width: 100%;
+  }
+
+  /* Aproveitando para centralizar o bloco de endereço no celular se alinhar o texto acima */
+  .address-block {
+    justify-content: center; 
+    text-align: left;
+  }
+}
+
+/* =========================================
+   CONTATO SECTION (Baseado no Protótipo)
+   ========================================= */
+.contact-title {
+  font-size: 2rem;
+  color: var(--black);
+  margin-bottom: 2.5rem;
+  font-family: 'Aileron-Light', sans-serif;
+  text-align: left; /* Alinha à esquerda como no design */
+}
+
+.contact-title strong {
+  font-family: 'Aileron-black', sans-serif;
+  font-weight: bold;
+}
+
+/* Container que divide em duas colunas */
+.contact-layout {
+  display: flex;
+  gap: 6rem; /* Espaço grande entre o formulário e as redes sociais */
+  justify-content: space-between;
+}
+
+.contact-form-column {
+  flex: 1;
+  max-width: 500px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Espaçamento entre os inputs */
+}
+
+/* O segredo do visual clean: sem borda, fundo branco e bem arredondado */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: none;
+  border-radius: 40px; /* Bordas estilo "pílula" */
+  background-color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--black);
+  outline: none;
+}
+
+.contact-form textarea {
+  border-radius: 20px; /* Textarea fica melhor com borda um pouco menos curva */
+  resize: none; /* Impede o usuário de esticar a caixa, mantendo o design */
+  min-height: 180px;
+}
+
+/* Cor do texto de dentro do input */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #555;
+  font-family: 'Aileron-Light', sans-serif;
+}
+
+.btn-submit {
+  background-color: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 1.2rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 40px;
+  width: 100%;
+  text-transform: lowercase; /* Força o "enviar" em letras minúsculas */
+  font-family: 'Aileron-black', sans-serif;
+  transition: opacity 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+  opacity: 0.8;
+}
+
+/* Coluna das Redes Sociais (Direita) */
+.contact-social-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.contact-social-column h3 {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+  font-family: 'Aileron-black', sans-serif;
+}
+
+.social-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.social-links-list li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1rem;
+  color: var(--black);
+  font-family: 'Aileron-Light', sans-serif;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 /* Garanta que esta chave final } é a que encerra o bloco @media! */

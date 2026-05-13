@@ -7,9 +7,9 @@ export default function SobreSection() {
         
         {/* Marco 1: Formação (Esquerda) */}
         <div className="timeline-item left">
-          <img src="/img/fotos-eliane/foto2.png" alt="Dra. Eliane Santiago na PUC/MG" className="timeline-image" />
+          <img src="/img/fotos-eliane/fteliane.png" alt="Dra. Eliane Santiago na PUC/MG" className="timeline-image" />
           <div className="timeline-content">
-            <h3>Formada em Direito pela PUC/MG</h3>
+            <h3>Formada em Direito pela PUC/MG 1993</h3>
             <p>Pós-graduada em Direito Processual Civil</p>
             <p>Pós-graduada em Direito Desportivo</p>
             <p>Pós-graduanda em Direito Eleitoral</p>
@@ -18,7 +18,7 @@ export default function SobreSection() {
 
         {/* Marco 2: Pessoal (Direita) */}
         <div className="timeline-item right">
-          <img src="/img/sobre/filhos.jpeg" alt="Família" className="timeline-image" />
+          <img src="/img/sobre/filhos.png" alt="Família" className="timeline-image" />
           <div className="timeline-content">
             <h3>Família</h3>
             <p>Mãe de Fernanda e Lucas</p>
@@ -27,7 +27,7 @@ export default function SobreSection() {
 
         {/* Marco 3: Profissional OAB (Esquerda) */}
         <div className="timeline-item left">
-          <img src="/img/sobre/oabrn.jpeg" alt="OAB Ribeirão das Neves" className="timeline-image" />
+          <img src="/img/sobre/oab.png" alt="OAB Ribeirão das Neves" className="timeline-image" />
           <div className="timeline-content">
             <h3>Presidente da OAB Ribeirão das Neves</h3>
             <p>Gestão entre os anos de 2013 e 2018<br/>uma das fundadoras da sede OAB em Ribeirão das Neves</p>
@@ -36,7 +36,7 @@ export default function SobreSection() {
 
         {/* Marco 4: Reconhecimento (Direita) */}
         <div className="timeline-item right">
-          <img src="/img/sobre/certificadooab.jpeg" alt="Certificação Digital" className="timeline-image" />
+          <img src="/img/sobre/certificadooab.png" alt="Certificação Digital" className="timeline-image" />
           <div className="timeline-content">
             <h3>Reconhecimento Estadual</h3>
             <p>2015 - Certificação pela contribuição na entrega de 200.000 certificados digitais para os advogados de Minas Gerais</p>
@@ -45,7 +45,7 @@ export default function SobreSection() {
 
         {/* Marco 5: Reconhecimento (Esquerda) */}
         <div className="timeline-item left">
-          <img src="/img/sobre/cidadania.jpeg" alt="Cidadania Honorária" className="timeline-image" />
+          <img src="/img/sobre/cidadania.png" alt="Cidadania Honorária" className="timeline-image" />
           <div className="timeline-content">
             <h3>Cidadania Honorária</h3>
             <p>2018 - Título de Cidadania Honorária de Ribeirão das Neves</p>
@@ -54,7 +54,7 @@ export default function SobreSection() {
 
         {/* Marco 6: TJD (Direita) */}
         <div className="timeline-item right">
-          <img src="/img/sobre/deesportiva.jpeg" alt="Auditora do TJD" className="timeline-image" />
+          <img src="/img/sobre/deesportiva.png" alt="Auditora do TJD" className="timeline-image" />
           <div className="timeline-content">
             <h3>Auditora do TJD</h3>
             <p>Auditora e Ex-presidente do Tribunal de Justiça Desportiva (2003)</p>
@@ -72,7 +72,7 @@ export default function SobreSection() {
 
         {/* Marco 8: REVIM (Direita) */}
         <div className="timeline-item right">
-          <img src="/img/fotos-eliane/revim.png" alt="Integração REVIM" className="timeline-image" />
+          <img src="/img/sobre/revim.png" alt="Integração REVIM" className="timeline-image" />
           <div className="timeline-content">
             <h3>REVIM</h3>
             <p>Integrante da REVIM desde 2015</p>
