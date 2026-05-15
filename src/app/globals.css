@@ -517,6 +517,17 @@ h4,
 .timeline-content h3 {
   color: var(--black);
   margin-bottom: 0.5rem;
+  text-align: left;
+  justify-content: left;
+  alin-items: left;
+}
+
+.timeline-content p {
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  text-align: left;
+  justify-content: left;
+  alin-items: left;
 }
 
 .office-section {
@@ -525,6 +536,12 @@ h4,
   gap: 50px;
   margin-bottom: 80px;
   margin-top: 4rem;
+}
+
+.office-section .section-title.subtitle {
+  text-align: left;
+  justify-content: left;
+  align-items: last baseline;
 }
 
 .office-gallery {
@@ -785,6 +802,30 @@ h4,
     justify-content: center; 
     text-align: left;
   }
+  /* Transformando a grid de especialidades num carrossel horizontal */
+  .cards-grid {
+    display: flex;
+    flex-wrap: nowrap; /* Impede de quebrar a linha */
+    overflow-x: auto;  /* Permite rolar para o lado */
+    scroll-snap-type: x mandatory; /* Ativa o "imã" do carrossel */
+    justify-content: flex-start; /* Alinha no começo para poder rolar */
+    padding-bottom: 20px; /* Espaço para não cortar a sombra */
+    gap: 15px;
+    
+    /* Esconde a barra de rolagem visualmente, mas mantém o scroll */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+
+  .cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card, .specialty-image-card {
+    scroll-snap-align: center; /* O cartão para sempre no centro */
+    flex: 0 0 85%; /* O cartão ocupa 85% da tela, deixando um "pedacinho" do próximo visível */
+    max-width: none;
+  }
 }
 
 /* =========================================
@@ -866,6 +907,21 @@ h4,
 
 .btn-submit:hover {
   opacity: 0.8;
+}
+
+/* Animação suave para os botões */
+.btn-whatsapp, .btn-submit {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de "mola" */
+}
+
+.btn-whatsapp:hover, .btn-submit:hover {
+  transform: translateY(-4px) scale(1.02); /* Sobe um pouquinho e cresce */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Cria uma sombra embaixo */
+}
+
+.btn-whatsapp:active, .btn-submit:active {
+  transform: translateY(0) scale(1); /* Volta ao normal ao clicar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 /* Coluna das Redes Sociais (Direita) */

@@ -7,75 +7,75 @@ export default function SobreSection() {
         
         {/* Marco 1: Formação (Esquerda) */}
         <div className="timeline-item left">
-          <img src="/img/fotos-eliane/fteliane.png" alt="Dra. Eliane Santiago na PUC/MG" className="timeline-image" />
+          <img src="/img/fotos-eliane/forum.png" alt="Dra. Eliane Santiago na PUC/MG" className="timeline-image" />
           <div className="timeline-content">
-            <h3>Formada em Direito pela PUC/MG 1993</h3>
-            <p>Pós-graduada em Direito Processual Civil</p>
-            <p>Pós-graduada em Direito Desportivo</p>
-            <p>Pós-graduanda em Direito Eleitoral</p>
+            <h3>Formação e Especialização</h3>
+            <p>- Graduada em Direito pela PUC/MG</p>
+            <p>- Pós-graduada em Direito Processual Civil</p>
+            <p>- Pós-graduada em Direito Desportivo</p>
+            <p>- Pós-graduanda em Direito Eleitoral</p>
           </div>
         </div>
 
         {/* Marco 2: Pessoal (Direita) */}
         <div className="timeline-item right">
-          <img src="/img/sobre/filhos.png" alt="Família" className="timeline-image" />
+          <img src="/img/sobre/oab.png" alt="Família" className="timeline-image" />
           <div className="timeline-content">
-            <h3>Família</h3>
-            <p>Mãe de Fernanda e Lucas</p>
+            <h3>Fundadora e Presidente da OAB (Ribeirão das Neves)</h3>
+            <p>Junto de mais 4 amigos instalamos a sede da OAB em Ribeirão das Neves. Pude ter a honrra de liderar como presidente da subseção OAB Ribeirão das Neves por dois mandatos, entre 2013 e 2018, realizando uma gestão focada na valorização da classe, defesa das prerrogativas dos advogados e aproximação com a sociedade.</p>
           </div>
         </div>
 
         {/* Marco 3: Profissional OAB (Esquerda) */}
         <div className="timeline-item left">
-          <img src="/img/sobre/oab.png" alt="OAB Ribeirão das Neves" className="timeline-image" />
+          <img src="/img/sobre/certificadooab.png" alt="OAB Ribeirão das Neves" className="timeline-image" />
           <div className="timeline-content">
-            <h3>Presidente da OAB Ribeirão das Neves</h3>
-            <p>Gestão entre os anos de 2013 e 2018<br/>uma das fundadoras da sede OAB em Ribeirão das Neves</p>
+            <h3>Reconhecimento Estadual (2015)</h3>
+            <p>Recebi um certificado por minha contribuição e trabalho árduo na entrega de mais de 200.000 certificados digitais aos advogados de todo o estado de Minas Gerais.</p>
           </div>
         </div>
 
         {/* Marco 4: Reconhecimento (Direita) */}
         <div className="timeline-item right">
-          <img src="/img/sobre/certificadooab.png" alt="Certificação Digital" className="timeline-image" />
+          <img src="/img/sobre/cidadania.png" alt="Cidadania Honorária" className="timeline-image" />
           <div className="timeline-content">
-            <h3>Reconhecimento Estadual</h3>
-            <p>2015 - Certificação pela contribuição na entrega de 200.000 certificados digitais para os advogados de Minas Gerais</p>
+            <h3>Cidadania Honorária (2018)</h3>
+            <p>Fui agraciada com o Título de Cidadania Honorária de Ribeirão das Neves, um reconhecimento público referente aos serviços prestados ao município e à população ao longo da minha trajetória.</p>
           </div>
         </div>
 
         {/* Marco 5: Reconhecimento (Esquerda) */}
         <div className="timeline-item left">
-          <img src="/img/sobre/cidadania.png" alt="Cidadania Honorária" className="timeline-image" />
-          <div className="timeline-content">
-            <h3>Cidadania Honorária</h3>
-            <p>2018 - Título de Cidadania Honorária de Ribeirão das Neves</p>
-          </div>
-        </div>
-
-        {/* Marco 6: TJD (Direita) */}
-        <div className="timeline-item right">
-          <img src="/img/sobre/deesportiva.png" alt="Auditora do TJD" className="timeline-image" />
+          <img src="/img/sobre/deesportiva.png" alt="Cidadania Honorária" className="timeline-image" />
           <div className="timeline-content">
             <h3>Auditora do TJD</h3>
-            <p>Auditora e Ex-presidente do Tribunal de Justiça Desportiva (2003)</p>
+            <p>Possui forte atuação na área desportiva, tendo sido Auditora e Ex-presidente do Tribunal de Justiça Desportiva (TJD), zelando pela ética e cumprimento das regras do esporte.</p>
           </div>
         </div>
 
-        {/* Marco 7: MOCOMP (Esquerda) */}
-        <div className="timeline-item left">
+        {/* Marco 6: MOCOMP (Direita) */}
+        <div className="timeline-item right">
           <img src="/img/sobre/mocomp.png" alt="Vice-presidente MOCOMP" className="timeline-image" />
           <div className="timeline-content">
             <h3>Vice-presidente do MOCOMP</h3>
-            <p>Atuação como Vice-presidente no ano de 2025</p>
+            <p>Atuação como Vice-presidente no ano de 2025 -  - associação de moradores do bairro Nova Pampulha aonde implemento ações para trazer melhorias para a região;</p>
           </div>
         </div>
 
-        {/* Marco 8: REVIM (Direita) */}
-        <div className="timeline-item right">
+        {/* Marco 7: revim (Esquerda) */}
+        <div className="timeline-item left">
           <img src="/img/sobre/revim.png" alt="Integração REVIM" className="timeline-image" />
           <div className="timeline-content">
             <h3>REVIM</h3>
-            <p>Integrante da REVIM desde 2015</p>
+            <p>Integrante da REVIM desde 2015. O ativismo político me levou a ser membro da rede de enfrentamento contra a violência a mulher- REVIM (rede de enfrentamento contra a violência doméstica) de neves, onde lutamos ativamente no combate a violência contra mulheres.</p>
+          </div>
+        </div>
+        {/* Marco 8: familia (Direita) */}
+        <div className="timeline-item right">
+          <img src="/img/sobre/filhos.png" alt="Família" className="timeline-image" />
+          <div className="timeline-content">
+            <h3>Minha Base: A Família</h3>
+            <p>A força por trás da profissão. Mãe orgulhosa de Fernanda e Lucas, e avó coruja de Valentina, Júlia e Davi. É neles que encontra a inspiração diária para lutar pelo direito das famílias.</p>
           </div>
         </div>
 
