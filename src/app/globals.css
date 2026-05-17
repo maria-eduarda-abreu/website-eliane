@@ -4,10 +4,12 @@
   font-family: "dupincel";
   src: url("/fonts/DupincelLargeTest-Bold.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Aileron-Light";
   src: url("/fonts/Aileron-Light.otf") format("opentype");
 }
+
 @font-face {
   font-family: "Aileron-black";
   src: url("/fonts/Aileron-Black.otf") format("opentype");
@@ -17,7 +19,7 @@
   /* Paleta de Cores da Identidade Visual */
   --yellow: #FFC700;
   --gray: #383838;
-  --whiteice: #F4F4F3;
+  --whiteice: #F8FAFD;
   --background: #ffffff;
   --foreground: #000000;
   /* Adicionado: O texto precisa de uma cor padrão no tema claro */
@@ -32,12 +34,20 @@
   margin: 0;
   padding: 0;
 }
+.container {
+  width: 100%;
+  max-width: 1200px; /* Limita a largura do conteúdo (ajuste se quiser mais largo ou estreito) */
+  margin: 0 auto;    /* A MÁGICA AQUI: O 'auto' nas laterais empurra a div para o centro exato */
+  padding: 0 20px;   /* Garante que o texto não cole nas bordas em telas de celular */
+}
 
 body {
   background: var(--background);
   color: var(--foreground);
+  align-items: center;
+  justify-content: center;
   /* Se você tiver a fonte Poppins instalada/importada depois, substitua o Arial por ela aqui */
-  
+
 }
 
 /* Aplicando a fonte elegante aos títulos para criar autoridade */
@@ -47,8 +57,9 @@ h3,
 h4,
 .font-dupincel {
   font-family: "dupincel", serif;
-  font-weight: normal;
+  font-weight: bold;
 }
+
 .font-aileron-light {
   font-family: "Aileron-Light", sans-serif;
   font-weight: normal;
@@ -63,7 +74,7 @@ h4,
   position: sticky;
   top: 0;
   z-index: 50;
-  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .nav-container {
@@ -105,7 +116,8 @@ h4,
   display: flex;
   gap: 1rem;
   align-items: center;
-  margin-left: 2rem; /* Separa os ícones do resto do menu no desktop */
+  margin-left: 2rem;
+  /* Separa os ícones do resto do menu no desktop */
 }
 
 /* =========================================
@@ -120,7 +132,8 @@ h4,
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 100; /* Mantém o botão acima do menu lateral */
+  z-index: 100;
+  /* Mantém o botão acima do menu lateral */
 }
 
 .nav-toggle span {
@@ -136,9 +149,11 @@ h4,
 .nav-toggle.active span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
+
 .nav-toggle.active span:nth-child(2) {
   opacity: 0;
 }
+
 .nav-toggle.active span:nth-child(3) {
   transform: translateY(-9px) rotate(-45deg);
 }
@@ -147,6 +162,7 @@ h4,
    LÓGICA PARA O MOBILE (Celular)
    ========================================= */
 @media (max-width: 768px) {
+
   /* Encolhe a Logo no celular */
   .logo-img {
     max-width: 150px;
@@ -170,34 +186,35 @@ h4,
     align-items: flex-start;
     padding-left: 2rem;
     padding-top: 10rem;
-    transition: right 0.4s ease; 
-    box-shadow: -5px 0 15px rgba(0,0,0,0.1); 
+    transition: right 0.4s ease;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     z-index: 99;
   }
 
-  
+
   .nav-menu.active {
     right: 0;
-    
+
   }
 
   .nav-menu li {
     margin: 0.2rem 0;
   }
 
-  
+
   .nav-social-icons {
     margin-left: 0;
     margin-top: 2rem;
   }
 }
+
 /* =========================================
    ESTILOS DO FOOTER (RODAPÉ)
    ========================================= */
 .footer {
   background-color: var(--background);
   /* Uma linha bem suave no topo apenas para não misturar com a seção anterior */
-  border-top: 1px solid rgba(0,0,0,0.05); 
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
   margin-top: 4rem;
 }
 
@@ -280,12 +297,13 @@ h4,
   .footer-social-icons {
     justify-content: left;
   }
+
   .footer-img {
-  width: 100%;
-  max-width: 160px;
-  height: auto;
-  object-fit: contain;
-}
+    width: 100%;
+    max-width: 160px;
+    height: auto;
+    object-fit: contain;
+  }
 }
 
 /* =========================================
@@ -294,106 +312,722 @@ h4,
 .section-padding {
   padding: 5rem 0;
 }
+
 .bg-light {
   background-color: var(--whiteice);
 }
+
 .section-title {
   text-align: center;
   font-size: 2.5rem;
   margin-bottom: 3rem;
   color: var(--black);
+  padding: 0 20px; /* Dá um respiro para o texto não colar nas bordas no celular */
 }
+
 .subtitle {
-  text-align: center;
+  text-align: left;
   color: var(--yellow);
   font-weight: bold;
   letter-spacing: 2px;
+  padding-left: 20px; /* Dá um respiro para o texto não colar nas bordas no celular */
+}
+.section-title.font-dupincel {
+  font-family: "dupincel", serif;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 1.5rem;
 }
 
 /* =========================================
-   HERO SECTION & STATS
+   HERO SECTION & STATS (Desktop)
    ========================================= */
-.hero-wrapper { background-color: var(--whiteice); padding-top: 2rem; }
-.hero-container { display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
-.hero-image { flex: 1; display: flex; justify-content: center; }
-.hero-content { flex: 1; }
-.hero-quote { font-size: 3rem; line-height: 1.2; color: var(--gray); margin-bottom: 2rem; position: relative; }
-.quote-marks { color: var(--yellow); font-size: 4rem; position: absolute; top: -30px; left: -40px; }
-
-.btn-whatsapp {
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  background-color: #1fcc5f; color: white; padding: 0.8rem 2rem;
-  border-radius: 30px; font-weight: bold; text-decoration: none; font-size: 1.1rem;
+/* 1. O Wrapper define a altura da seção inicial */
+.hero-wrapper {
+  position: relative;
+  min-height: 650px; /* Define uma altura robusta para o Hero aparecer bem */
+  height: 50vh;      /* Ocupa 85% da altura da tela do usuário */
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  background-color: var(--black);
 }
 
+/* 2. Configuração do Background Total */
+.hero-image-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 120%;
+  z-index: 0; /* Fica atrás de tudo */
+}
+
+/* Camada escura para dar contraste com o texto branco */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(0, 0, 0, 0.45); /* Escurece 45% da foto */
+  z-index: 1;
+}
+
+/* 3. O CONTAINER DO CONTEÚDO */
+.hero-container {
+  position: relative;
+  z-index: 2; /* Fica por cima da foto e do overlay */
+  display: flex;
+  align-items: center;
+  
+  /* O PULO DO GATO 1: Empurra o bloco de conteúdo totalmente para o lado DIREITO */
+  justify-content: flex-end; 
+  
+  flex: 1;
+  width: 100%;
+}
+
+.quote-marks{
+  position: absolute;
+  color: var(--yellow);
+  font-size: 4rem;
+  font-family: 'Aileron-black', sans-serif;
+  top: -20px;
+  left: -20px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.15; /* Deixa as aspas bem suaves para não competir com o texto */
+}
+
+/* 4. O BLOCO DE TEXTO E BOTÃO */
+.hero-content {
+  max-width: 550px; /* Limita a largura para o texto não espalhar pela tela toda */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  
+  /* O PULO DO GATO 2: Força todos os itens (título, parágrafo, botão) a alinharem à ESQUERDA */
+  align-items: flex-start; 
+  text-align: left; 
+  
+  padding: 2rem 0;
+}
+
+/* Garante que o título fique branco e legível sobre o fundo */
+.hero-quote {
+  font-size: 3rem;
+  line-height: 1.2;
+  color: white !important;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+/* Ajuste da sua linha vertical no tema escuro/fundo total */
+.linha-vertical {
+  border-left: 2px solid var(--yellow); /* Destaca a linha com o amarelo da identidade */
+  padding-left: 15px;
+  margin-left: 5px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #dddddd; /* Deixa o texto cinza claro para melhor leitura */
+}
+
+.btn-whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  background-color: #25D366;
+  color: white;
+  padding: 1rem 2.5rem;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  font-size: 1.1rem;
+  width: fit-content;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+/* Faixa de Estatísticas */
 .hero-stats {
   background-color: var(--black);
-  padding: 2rem 0;
-  margin-top: 2rem;
+  padding: 3.5rem 0;
+  width: 100%;
+  position: relative; /* Permite o uso do z-index */
+  z-index: 2;         /* Força a faixa preta a ficar por cima da foto de fundo */
 }
 .stats-container {
   display: flex;
   justify-content: space-around;
-  text-align: center;
-  color: var(--whiteice);
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
 }
+
+.stat-item {
+  text-align: center;
+}
+
 .stat-number {
   display: block;
   color: var(--yellow);
-  font-size: 2.5rem;
+  font-size: 3.5rem;
   font-weight: bold;
+  font-family: "Aileron-black", sans-serif;
+  line-height: 1;
 }
 
+.stat-label {
+  color: var(--whiteice);
+  font-size: 1rem;
+  font-family: "Aileron-", sans-serif;
+  text-transform: lowercase;
+}
 /* =========================================
    TIMELINE (SOBRE MIM)
-   ========================================= */
-.timeline { position: relative; max-width: 800px; margin: 0 auto; }
+========================================= */
+.container.section-padding{
+  padding: 80px 0px 0px; /* Remove o padding extra do container para a timeline ocupar toda a largura possível */
+}
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
 /* A linha central vertical */
 .timeline::after {
-  content: ''; position: absolute; width: 4px; background-color: var(--yellow);
-  top: 0; bottom: 0; left: 50%; margin-left: -2px;
+  content: '';
+  position: absolute;
+  width: 4px;
+  background-color: var(--yellow);
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  margin-left: -2px;
 }
-.timeline-item { padding: 10px 40px; position: relative; width: 50%; }
-.timeline-item.left { left: 0; text-align: right; }
-.timeline-item.right { left: 50%; }
+
+.timeline-item {
+  padding: 10px 40px;
+  position: relative;
+  width: 50%;
+}
+
+.timeline-item.left {
+  left: 0;
+  text-align: right;
+}
+
+.timeline-item.right {
+  left: 50%;
+}
+
 /* Os "nós" da timeline */
 .timeline-item::after {
-  content: ''; position: absolute; width: 20px; height: 20px;
-  background-color: white; border: 4px solid var(--yellow); border-radius: 50%;
-  top: 15px; z-index: 1;
+  content: '';
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  background-color: white;
+  border: 4px solid var(--yellow);
+  border-radius: 50%;
+  top: 15px;
+  z-index: 1;
 }
-.timeline-item.left::after { right: -10px; }
-.timeline-item.right::after { left: -10px; }
-.timeline-content { padding: 20px; background-color: var(--whiteice); border-radius: 8px; }
-.timeline-content h3 { color: var(--black); margin-bottom: 0.5rem; }
+
+.timeline-item.left::after {
+  right: -10px;
+}
+
+.timeline-item.right::after {
+  left: -10px;
+}
+
+.timeline-content {
+  padding: 20px;
+  background-color: var(--whiteice);
+  border-radius: 8px;
+}
+
+.timeline-content h3 {
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.timeline-content p {
+  color: var(--black);
+  margin-bottom: 0.5rem;
+  text-align: left;
+}
+
+.office-section {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin-bottom: 80px;
+  margin-top: 4rem;
+}
+
+.office-gallery {
+  display: flex;
+  gap: 15px;
+  flex: 1;
+}
+
+.gallery-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Regras das imagens da galeria */
+.gallery-img {
+  border-radius: 20px;
+  object-fit: cover;
+}
+
+.gallery-img.tall {
+  width: 200px;
+  height: 350px;
+}
+
+.gallery-img.top {
+  width: 250px;
+  height: 200px;
+}
+
+.gallery-img.bottom {
+  width: 250px;
+  height: 135px;
+}
+
+.office-info {
+  flex: 1;
+  text-align: left;
+}
+
+.address-block {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.location-icon .social-icon{
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  
+}
+
+.endpage {
+  width: 100%;
+  margin-top: 0rem; /* Espaço entre o fim da timeline e a imagem */
+  overflow: hidden;
+}
+
+.endpage img {
+  width: 100%;      /* Força a imagem a ocupar 100% da largura da tela */
+  height: auto;     /* Mantém a proporção da imagem */
+  display: block;   /* Remove espaços em branco indesejados abaixo da imagem */
+}
+
 
 /* =========================================
-   ESCRITÓRIO & FORMS
+   PARTE 2: ESPECIALIDADES (CARDS COM FOTO)
    ========================================= */
-.cards-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem; margin-bottom: 4rem; }
-.service-card { background: white; padding: 2rem; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); border-bottom: 4px solid var(--yellow); }
-.office-area { text-align: center; margin-top: 4rem; }
-.office-card { background: var(--black); color: var(--whiteice); padding: 2rem; border-radius: 8px; max-width: 600px; margin: 0 auto; }
-.office-card h3 { color: var(--yellow); margin-bottom: 1rem; }
+.cards-grid {
+  display: flex;             /* Transforma a div em um contêiner flexível (coloca lado a lado) */
+  justify-content: center;   /* Centraliza os três blocos no meio da tela */
+  gap: 30px;                 /* Espaçamento entre os cartões */
+  flex-wrap: wrap;           /* Permite que eles voltem a empilhar no celular */
+  margin-bottom: 4rem;       /* Dá um respiro embaixo da seção */
+  width: 100%;               /* Garante que ocupe o espaço inteiro para centralizar direito */
+}
+.specialties-header {
+  margin-bottom: 30px;
+  text-align: left;
+}
 
-.contact-form-container { max-width: 600px; margin: 0 auto; }
-.form-group { margin-bottom: 1.5rem; display: flex; flex-direction: column; }
-.form-group label { margin-bottom: 0.5rem; font-weight: bold; }
-.form-group input, .form-group textarea { padding: 1rem; border: 1px solid #ccc; border-radius: 4px; font-family: inherit; }
-.btn-submit { background-color: var(--yellow); color: var(--black); border: none; padding: 1rem 2rem; font-weight: bold; font-size: 1.1rem; cursor: pointer; border-radius: 4px; width: 100%; }
+/* O "Pulo do gato" para os cards ficarem do tamanho certo */
+.specialty-image-card {
+  position: relative;
+  width: 300px;
+  height: 400px;
+  border-radius: 25px;
+  overflow: hidden; 
+  box-shadow: 8px 8px 0px #FDF0D5; /* Sombra amarelinha do design */
+}
+
+/* Faz a imagem de fundo preencher o card */
+.specialty-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
+
+/* Gradiente escuro embaixo para o texto branco ficar legível */
+.specialty-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%;
+  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  z-index: 2;
+}
+
+/* Título branco em cima da foto */
+.specialty-title {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  color: white;
+  z-index: 3;
+  font-size: 1.2rem;
+  font-family: 'Aileron-black', sans-serif;
+  line-height: 1.2;
+}
 
 /* =========================================
-   MOBILE RESPONSIVO
+   RESPONSIVIDADE (Mobile)
    ========================================= */
 @media (max-width: 768px) {
-  .hero-container { flex-direction: column; text-align: center; }
-  .hero-quote { font-size: 2rem; }
-  .quote-marks { display: none; } /* Oculta as aspas no mobile para limpar o visual */
-  .stats-container { flex-direction: column; gap: 2rem; }
+  /* =========================================
+     HERO SECTION RESPONSIVO (MOBILE STACKED)
+     ========================================= */
+
+  /* 1. Transforma o wrapper em um flex colunar para ordenar os filhos */
+  .hero-wrapper {
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    min-height: unset;
+    background-color: #0A0A0B;
+  }
+
+  /* 2. TEXTO E BOTÃO (Forçado a ir para o TOPO: Order 1) */
+  .hero-container {
+    order: 1;
+    position: relative;
+    justify-content: left;
+    padding: 3rem 20px 2rem 20px;
+  }
+
+  .hero-content {
+    max-width: 100%;
+    align-items: left;
+    text-align: left;
+    padding: 0;
+  }
+
+  /* Como o texto saiu de cima da foto, mudamos a cor para escuro para dar leitura */
+  .hero-quote {
+    font-size: 2.2rem;
+    color: var(--whiteice) !important; 
+    text-shadow: none; /* Remove a sombra do desktop */
+  }
+
+  /* Estiliza a linha vertical como um divisor centralizado abaixo do texto */
+  .linha-vertical {
+    padding-left: 2;
+    padding-bottom: 1px;
+    color: var(--whiteice); /* Deixa o texto da linha horizontal amarelo para destacar como no design */
+    display: inline-block;
+  }
+  .quote-marks {
+    padding-left: 2px; /* Esconde as aspas decorativas no mobile para não competir com o texto */
+  }
+
+  /* 3. A FOTO DO HERO (Forçada a ir para o MEIO: Order 2) */
+  .hero-image-full {
+    order: 2;
+    position: relative; /* Muda de absolute para relative para empilhar */
+    width: 100%;
+    height: 350px;      /* Controla a altura ideal da foto no celular */
+    display: block;
+  }
+
+  /* Oculta o overlay escuro no celular, já que o texto não está mais em cima da imagem */
+  .hero-overlay {
+    display: none;
+  }
+
+  /* 4. OS NÚMEROS E ESTATÍSTICAS (Forçados a ir para o FINAL: Order 3) */
+  .hero-stats {
+    order: 3;
+    position: relative;
+    padding: 3rem 20px;
+  }
+
+  .stats-container {
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+  /* Cole isso dentro do seu @media (max-width: 768px) existente */
+  .office-section {
+    flex-direction: column;
+  }
+  .office-info {
+    order: 1;
+    
+  }
   
-  /* Ajuste da Timeline para o Mobile (linha vai para a esquerda) */
-  .timeline::after { left: 20px; }
-  .timeline-item { width: 100%; padding-left: 50px; padding-right: 10px; text-align: left; }
-  .timeline-item.left, .timeline-item.right { left: 0; }
-  .timeline-item.left::after, .timeline-item.right::after { left: 10px; }
+  .office-gallery {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .gallery-img.tall, 
+  .gallery-img.top, 
+  .gallery-img.bottom {
+    width: 100%; 
+    height: auto;
+  }
+  .contact-layout {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .contact-form-column {
+    max-width: 100%;
+  }
+
+  .subtitle.section-title.font-dupincel {
+    text-align: left;
+    padding-left: 20px; /* Dá um respiro para o texto não colar na borda no celular */
+  }
+  /* =========================================
+     TIMELINE (SOBRE MIM) - MOBILE
+  ========================================= */
+  
+  /* 1. Move a linha central amarela para a esquerda */
+  .timeline::after {
+    left: 20px; 
+  }
+
+  /* 2. Faz todos os blocos ocuparem 100% da largura */
+  .timeline-item {
+    width: 100%; 
+    padding-left: 60px; /* Cria espaço à esquerda para a foto não colar na linha */
+    padding-right: 15px;
+  }
+
+  /* 3. Tira o deslocamento e alinha o texto de todos para a esquerda */
+  .timeline-item.left, 
+  .timeline-item.right {
+    left: 0; 
+    text-align: left; 
+  }
+
+  /* 4. Move as bolinhas (nós) para ficarem em cima da linha na nova posição */
+  .timeline-item.left::after, 
+  .timeline-item.right::after {
+    left: 10px; 
+  }
+
+  /* 5. Garante que as fotos dentro da timeline também fiquem responsivas */
+  .timeline-image {
+    width: 100%;
+    max-width: 250px; /* Evita que a foto fique gigante no tablet */
+    height: auto;
+    margin-bottom: 15px; /* Dá um respiro entre a foto e o título */
+  }
+  
+  /*  garante que empilhem direito no mobile */
+  .timeline-item {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+  }
+  /* =========================================
+     ESCRITÓRIO - INVERSÃO NO MOBILE
+     ========================================= */
+  .office-section {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .office-info {
+    order: 1; /* Força o bloco de texto a vir primeiro */
+    margin-bottom: 2.5rem; /* Dá um respiro entre o endereço e as fotos que vêm logo abaixo */
+    text-align: left;
+  }
+
+  .office-gallery {
+    order: 2; /* Força a galeria de fotos a vir depois */
+    width: 100%;
+  }
+
+  /* Aproveitando para centralizar o bloco de endereço no celular se alinhar o texto acima */
+  .address-block {
+    justify-content: center; 
+    text-align: left;
+  }
+  /* Transformando a grid de especialidades num carrossel horizontal */
+  .cards-grid {
+    display: flex;
+    flex-wrap: nowrap; /* Impede de quebrar a linha */
+    overflow-x: auto;  /* Permite rolar para o lado */
+    scroll-snap-type: x mandatory; /* Ativa o "imã" do carrossel */
+    justify-content: flex-start; /* Alinha no começo para poder rolar */
+    padding-bottom: 20px; /* Espaço para não cortar a sombra */
+    gap: 15px;
+    
+    /* Esconde a barra de rolagem visualmente, mas mantém o scroll */
+    -ms-overflow-style: none;  
+    scrollbar-width: none;  
+  }
+
+  .cards-grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .service-card, .specialty-image-card {
+    scroll-snap-align: center; /* O cartão para sempre no centro */
+    flex: 0 0 85%; /* O cartão ocupa 85% da tela, deixando um "pedacinho" do próximo visível */
+    max-width: none;
+  }
 }
+
+/* =========================================
+   CONTATO SECTION (Baseado no Protótipo)
+   ========================================= */
+.contact-title {
+  font-size: 2rem;
+  color: var(--black);
+  margin-bottom: 2.5rem;
+  font-family: 'Aileron-Light', sans-serif;
+  text-align: left; /* Alinha à esquerda como no design */
+}
+
+.contact-title strong {
+  font-family: 'Aileron-black', sans-serif;
+  font-weight: bold;
+  color: var(--yellow);
+}
+
+/* Container que divide em duas colunas */
+.contact-layout {
+  display: flex;
+  gap: 6rem; /* Espaço grande entre o formulário e as redes sociais */
+  justify-content: space-between;
+}
+
+.contact-form-column {
+  flex: 1;
+  max-width: 500px;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem; /* Espaçamento entre os inputs */
+}
+
+/* O segredo do visual clean: sem borda, fundo branco e bem arredondado */
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  padding: 1.2rem 1.5rem;
+  border: none;
+  border-radius: 40px; /* Bordas estilo "pílula" */
+  background-color: white;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--black);
+  outline: none;
+}
+
+.contact-form textarea {
+  border-radius: 20px; /* Textarea fica melhor com borda um pouco menos curva */
+  resize: none; /* Impede o usuário de esticar a caixa, mantendo o design */
+  min-height: 180px;
+}
+
+/* Cor do texto de dentro do input */
+.contact-form input::placeholder,
+.contact-form textarea::placeholder {
+  color: #555;
+  font-family: 'Aileron-Light', sans-serif;
+}
+
+.btn-submit {
+  background-color: var(--yellow);
+  color: var(--black);
+  border: none;
+  padding: 1.2rem 2rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  border-radius: 40px;
+  width: 100%;
+  text-transform: lowercase; /* Força o "enviar" em letras minúsculas */
+  font-family: 'Aileron-black', sans-serif;
+  transition: opacity 0.3s ease;
+  margin-top: 0.5rem;
+}
+
+.btn-submit:hover {
+  opacity: 0.8;
+}
+
+/* Animação suave para os botões */
+.btn-whatsapp, .btn-submit {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de "mola" */
+}
+
+.btn-whatsapp:hover, .btn-submit:hover {
+  transform: translateY(-4px) scale(1.02); /* Sobe um pouquinho e cresce */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Cria uma sombra embaixo */
+}
+
+.btn-whatsapp:active, .btn-submit:active {
+  transform: translateY(0) scale(1); /* Volta ao normal ao clicar */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Coluna das Redes Sociais (Direita) */
+.contact-social-column {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+
+.contact-social-column h3 {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+  color: var(--black);
+  font-family: 'Aileron-black', sans-serif;
+}
+
+.social-links-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.social-links-list li {
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  font-size: 1rem;
+  color: var(--black);
+  font-family: 'Aileron-Light', sans-serif;
+}
+
+.social-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+/* Garanta que esta chave final } é a que encerra o bloco @media! */

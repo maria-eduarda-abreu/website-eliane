@@ -23,7 +23,7 @@ export default function Navbar() {
                 <div className="nav-brand">
                     <Link href="/" onClick={fecharMenu}>
                         <Image
-                            src="/img/logo2.png"
+                            src="/img/logo5.png"
                             alt="Logo Dra. Eliane Santiago"
                             width={250}
                             height={70}
@@ -54,20 +54,23 @@ export default function Navbar() {
 
                     {/* Ícones das Redes Sociais */}
                     <li className="nav-social-icons">
-                        <a href="https://wa.me/5531900000000" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                        <a href="https://api.whatsapp.com/send?phone=5531999184087&text=Ol%C3%A1%2C%20Tudo%20bem!%0A" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
                             <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} />
                         </a>
-                        <a href="https://instagram.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
-                        </a>
-                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
+                        <a href="mailto:contato.draelianesantiago@gmail.com" onClick={fecharMenu}>
                             <Image src="/img/icon/email.png" alt="Email" width={24} height={24} />
                         </a>
-                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
-                            <Image src="/img/icon/youtube.png" alt="Email" width={24} height={24} />
+                        <a href="https://www.instagram.com/dra.elianesantiago/" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
                         </a>
-                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
-                            <Image src="/img/icon/facebook.png" alt="Email" width={24} height={24} />
+                        <a href="https://www.youtube.com/@dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/youtube.png" alt="YouTube" width={24} height={24} />
+                        </a>
+                        <a href="https://www.facebook.com/dra.elianesantiago?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/facebook.png" alt="Facebook" width={24} height={24} />
+                        </a>
+                        <a href="https://www.tiktok.com/@dra.elianesantiago?_t=8n73LGbvoSk&_r=1" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
+                            <Image src="/img/icon/tiktok.png" alt="TikTok" width={24} height={24} />
                         </a>
                     </li>
                 </ul>
