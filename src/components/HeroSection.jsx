@@ -33,34 +33,39 @@ const AnimatedNumber = ({ end, suffix = "", prefix = "" }) => {
 export default function HeroSection() {
   return (
     <div className="hero-wrapper">
-      <div className="container hero-container">
-        <div className="hero-image">
-          <Image 
-            src="/img/fotos-eliane/foto5.png" 
-            alt="Dra. Eliane Santiago" 
-            width={500} 
-            height={600} 
-            priority
-            style={{ objectFit: 'contain' }}
-          />
-        </div>
+      
+      {/* IMAGEM DE FUNDO (Alterado aqui para ocupar a tela toda) */}
+      <div className="hero-image-full">
+        <Image 
+          src="/img/fotos-eliane/fthero2.png" 
+          alt="Dra. Eliane Santiago" 
+          fill
+          priority
+          style={{ objectFit: 'cover', objectPosition: 'center' }}
+        />
+        <div className="hero-overlay"></div>
+      </div>
 
+      <div className="container hero-container">
         <div className="hero-content">
           <h2 className="font-dupincel hero-quote">
             <span className="quote-marks">"</span>
             Defender direitos é mais do que profissão, é missão de vida.
           </h2>
-          <p class="linha-vertical">
+          
+          {/* class corrigido para className */}
+          <p className="linha-vertical">
             entre em contato conosco e <br/> garanta seus direitos
           </p>
 
           <a href="https://wa.me/5531999184087" target="_blank" rel="noopener noreferrer" className="btn-whatsapp">
-            <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={20} height={20} />
+            <Image src="/img/icon/whatsappbranco.png" alt="WhatsApp" width={20} height={20} />
             Whatsapp
           </a>
         </div>
       </div>
 
+      {/* PARTE DOS NÚMEROS MANTIDA INTACTA */}
       <div className="hero-stats">
         <div className="container stats-container">
           <div className="stat-item">
@@ -78,6 +83,7 @@ export default function HeroSection() {
           </div>
         </div>
       </div>
+      
     </div>
   );
 }

@@ -325,80 +325,110 @@ h4,
 }
 
 .subtitle {
-  text-align: center;
+  text-align: left;
   color: var(--yellow);
   font-weight: bold;
   letter-spacing: 2px;
+}
+.section-title.font-dupincel {
+  font-family: "dupincel", serif;
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 1.5rem;
 }
 
 /* =========================================
    HERO SECTION & STATS (Desktop)
    ========================================= */
+/* 1. O Wrapper define a altura da seção inicial */
 .hero-wrapper {
-  background-color: var(--whiteice);
-  padding-top: 0; /* A foto vai encostar na base */
+  position: relative;
+  min-height: 650px; /* Define uma altura robusta para o Hero aparecer bem */
+  height: 50vh;      /* Ocupa 85% da altura da tela do usuário */
+  display: flex;
+  flex-direction: column;
   overflow: hidden;
+  background-color: var(--black);
+}
+
+/* 2. Configuração do Background Total */
+.hero-image-full {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0; /* Fica atrás de tudo */
+}
+
+/* Camada escura para dar contraste com o texto branco */
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 0%;
+  background: rgba(0, 0, 0, 0.45); /* Escurece 45% da foto */
+  z-index: 1;
+}
+
+/* 3. O CONTAINER DO CONTEÚDO */
+.hero-container {
+  position: relative;
+  z-index: 2; /* Fica por cima da foto e do overlay */
+  display: flex;
+  align-items: center;
+  
+  /* O PULO DO GATO 1: Empurra o bloco de conteúdo totalmente para o lado DIREITO */
+  justify-content: flex-end; 
+  
+  flex: 1;
   width: 100%;
 }
 
-.hero-container {
-  display: flex;
-  align-items: stretch;
-  justify-content: space-between;
-  max-width: 1200px;
-  margin: 0 auto;
-  min-height: 500px;
+.quote-marks{
+  position: absolute;
+  color: var(--yellow);
+  font-size: 4rem;
+  font-family: 'Aileron-black', sans-serif;
+  top: -20px;
+  left: -20px;
+  width: 60px;
+  height: 60px;
+  opacity: 0.15; /* Deixa as aspas bem suaves para não competir com o texto */
 }
 
-.hero-image {
-  flex: 1;
-  display: flex;
-  align-items: flex-end; /* Encosta a foto embaixo */
-  justify-content: flex-start;
-  
-}
-
-.hero-image img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
+/* 4. O BLOCO DE TEXTO E BOTÃO */
 .hero-content {
-  flex: 1;
+  max-width: 550px; /* Limita a largura para o texto não espalhar pela tela toda */
+  width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: 4rem 0;
-  position: relative;
+  
+  /* O PULO DO GATO 2: Força todos os itens (título, parágrafo, botão) a alinharem à ESQUERDA */
+  align-items: flex-start; 
+  text-align: left; 
+  
+  padding: 2rem 0;
 }
 
+/* Garante que o título fique branco e legível sobre o fundo */
 .hero-quote {
-  font-size: 3.5rem;
-  line-height: 1.1;
-  color: var(--gray);
-  margin-bottom: 2rem;
+  font-size: 3rem;
+  line-height: 1.2;
+  color: white !important;
+  margin-bottom: 1.5rem;
   position: relative;
-  z-index: 2;
 }
 
-.quote-marks {
-  color: var(--yellow);
-  font-size: 7rem;
-  position: absolute;
-  top: -50px;
-  left: -40px;
-  font-family: "Aileron-black", sans-serif;
-  z-index: 1;
-  opacity: 0.8;
-}
-
+/* Ajuste da sua linha vertical no tema escuro/fundo total */
 .linha-vertical {
-  border-left: 1px solid #333; /* Cria a linha (espessura, estilo, cor) */
-  padding-left: 15px;           /* Espaço entre a linha e o texto */
-  margin-left: 10px;            /* Espaço antes da linha (opcional) */
-  line-height: 1.4;             /* Melhora o espaçamento entre linhas */
-  font-family: sans-serif;      /* Estilo da fonte */
-  color: #555;                /* Cor do texto */
+  border-left: 2px solid var(--yellow); /* Destaca a linha com o amarelo da identidade */
+  padding-left: 15px;
+  margin-left: 5px;
+  margin-bottom: 2rem;
+  line-height: 1.5;
+  color: #dddddd; /* Deixa o texto cinza claro para melhor leitura */
 }
 
 .btn-whatsapp {
@@ -422,8 +452,9 @@ h4,
   background-color: var(--black);
   padding: 3.5rem 0;
   width: 100%;
+  position: relative; /* Permite o uso do z-index */
+  z-index: 2;         /* Força a faixa preta a ficar por cima da foto de fundo */
 }
-
 .stats-container {
   display: flex;
   justify-content: space-around;
@@ -518,16 +549,12 @@ h4,
   color: var(--black);
   margin-bottom: 0.5rem;
   text-align: left;
-  justify-content: left;
-  alin-items: left;
 }
 
 .timeline-content p {
   color: var(--black);
   margin-bottom: 0.5rem;
   text-align: left;
-  justify-content: left;
-  alin-items: left;
 }
 
 .office-section {
@@ -536,12 +563,6 @@ h4,
   gap: 50px;
   margin-bottom: 80px;
   margin-top: 4rem;
-}
-
-.office-section .section-title.subtitle {
-  text-align: left;
-  justify-content: left;
-  align-items: last baseline;
 }
 
 .office-gallery {
@@ -579,6 +600,7 @@ h4,
 
 .office-info {
   flex: 1;
+  text-align: left;
 }
 
 .address-block {
@@ -588,16 +610,25 @@ h4,
   margin-top: 30px;
 }
 
-.location-icon {
-  background-color: var(--yellow);
-  color: var(--whiteice);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+.location-icon .social-icon{
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+  
 }
+
+.endpage {
+  width: 100%;
+  margin-top: 0rem; /* Espaço entre o fim da timeline e a imagem */
+  overflow: hidden;
+}
+
+.endpage img {
+  width: 100%;      /* Força a imagem a ocupar 100% da largura da tela */
+  height: auto;     /* Mantém a proporção da imagem */
+  display: block;   /* Remove espaços em branco indesejados abaixo da imagem */
+}
+
 
 /* =========================================
    PARTE 2: ESPECIALIDADES (CARDS COM FOTO)
@@ -612,7 +643,7 @@ h4,
 }
 .specialties-header {
   margin-bottom: 30px;
-  text-align: center;
+  text-align: left;
 }
 
 /* O "Pulo do gato" para os cards ficarem do tamanho certo */
@@ -663,48 +694,76 @@ h4,
    RESPONSIVIDADE (Mobile)
    ========================================= */
 @media (max-width: 768px) {
-  .hero-container {
+  /* =========================================
+     HERO SECTION RESPONSIVO (MOBILE STACKED)
+     ========================================= */
+
+  /* 1. Transforma o wrapper em um flex colunar para ordenar os filhos */
+  .hero-wrapper {
+    display: flex;
     flex-direction: column;
-    padding: 2rem 1.5rem 0; /* Mantém o 0 no final para a foto colar na base */
+    height: auto;
+    min-height: unset;
+    background-color: #0A0A0B;
+  }
+
+  /* 2. TEXTO E BOTÃO (Forçado a ir para o TOPO: Order 1) */
+  .hero-container {
+    order: 1;
+    position: relative;
+    justify-content: left;
+    padding: 3rem 20px 2rem 20px;
   }
 
   .hero-content {
-    order: 1; /* TEXTO VAI PARA O TOPO */
-    padding: 1rem 0 2rem 0;
-    align-items: flex-start; /* Alinha os botões à esquerda */
+    max-width: 100%;
+    align-items: left;
     text-align: left;
+    padding: 0;
   }
 
+  /* Como o texto saiu de cima da foto, mudamos a cor para escuro para dar leitura */
   .hero-quote {
-    font-size: 2.2rem; /* Reduz a fonte do título */
-    padding-left: 3rem; /* Empurra o texto para não ficar em cima das aspas */
+    font-size: 2.2rem;
+    color: var(--whiteice) !important; 
+    text-shadow: none; /* Remove a sombra do desktop */
   }
 
+  /* Estiliza a linha vertical como um divisor centralizado abaixo do texto */
+  .linha-vertical {
+    padding-left: 2;
+    padding-bottom: 1px;
+    color: var(--whiteice); /* Deixa o texto da linha horizontal amarelo para destacar como no design */
+    display: inline-block;
+  }
   .quote-marks {
-    font-size: 5.5rem; /* Reduz o tamanho da aspa */
-    top: -15px; /* Sobe um pouco a aspa */
-    left: -10px; /* Gruda a aspa na margem esquerda */
+    padding-left: 2px; /* Esconde as aspas decorativas no mobile para não competir com o texto */
   }
 
-  .hero-image {
-    order: 2; /* FOTO VAI PARA BAIXO */
-    justify-content: flex-start; /* Alinha a imagem à esquerda, como no print */
+  /* 3. A FOTO DO HERO (Forçada a ir para o MEIO: Order 2) */
+  .hero-image-full {
+    order: 2;
+    position: relative; /* Muda de absolute para relative para empilhar */
     width: 100%;
+    height: 350px;      /* Controla a altura ideal da foto no celular */
+    display: block;
   }
 
-  .hero-image img {
-    max-width: 90%; /* Deixa a imagem num tamanho agradável no celular */
-    margin-bottom: -10px; /* Garante que ela colou na faixa preta de baixo */
+  /* Oculta o overlay escuro no celular, já que o texto não está mais em cima da imagem */
+  .hero-overlay {
+    display: none;
   }
 
-  /* Ajuste dos Status para ficarem em coluna */
+  /* 4. OS NÚMEROS E ESTATÍSTICAS (Forçados a ir para o FINAL: Order 3) */
   .hero-stats {
-    padding: 3rem 1.5rem;
+    order: 3;
+    position: relative;
+    padding: 3rem 20px;
   }
 
   .stats-container {
     flex-direction: column;
-    gap: 3rem;
+    gap: 2.5rem;
   }
   /* Cole isso dentro do seu @media (max-width: 768px) existente */
   .office-section {
@@ -734,6 +793,11 @@ h4,
   
   .contact-form-column {
     max-width: 100%;
+  }
+
+  .subtitle.section-title.font-dupincel {
+    text-align: left;
+    padding-left: 20px; /* Dá um respiro para o texto não colar na borda no celular */
   }
   /* =========================================
      TIMELINE (SOBRE MIM) - MOBILE
@@ -789,7 +853,7 @@ h4,
   .office-info {
     order: 1; /* Força o bloco de texto a vir primeiro */
     margin-bottom: 2.5rem; /* Dá um respiro entre o endereço e as fotos que vêm logo abaixo */
-    text-align: center; /* Opcional: Centraliza o texto no celular para ficar mais harmônico */
+    text-align: left;
   }
 
   .office-gallery {
@@ -842,6 +906,7 @@ h4,
 .contact-title strong {
   font-family: 'Aileron-black', sans-serif;
   font-weight: bold;
+  color: var(--yellow);
 }
 
 /* Container que divide em duas colunas */
