@@ -10,8 +10,9 @@ const itensAcervo = [
     categoria: "Artigos",
     descricao: "Análise das principais transformações no direito empresarial e adaptações às novas regulamentações.",
     data: "Janeiro de 2024",
-    link: "#",
-    tipo: "Ler Artigo"
+    link: "/acervo/documento de teste.pdf", // Exemplo usando seu arquivo existente
+    tipo: "Baixar PDF",
+    download: true,
   },
   {
     id: 2,
@@ -29,8 +30,9 @@ const itensAcervo = [
     categoria: "Cases",
     descricao: "Otimização da governança e redução de riscos legais em uma reestruturação estratégica.",
     data: "2023",
-    link: "#",
-    tipo: "Ver Detalhes",
+    link: "/acervo/documento de teste.pdf", // Exemplo usando seu arquivo existente
+    tipo: "Baixar PDF",
+    download: true,
     nota: "*Respeitando a confidencialidade e o código de ética da OAB"
   },
   // Adicione aqui os outros itens do seu arquivo HTML original
