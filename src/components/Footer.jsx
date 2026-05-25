@@ -10,7 +10,7 @@ export default function Footer() {
         <div className="footer-logo">
           <Link href="/#inicio">
             <Image
-              src="/img/logo2.png"
+              src="/img/logo4.png"
               alt="Logo Dra. Eliane Santiago"
               width={200}
               height={60}

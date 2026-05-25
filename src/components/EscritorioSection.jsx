@@ -5,7 +5,7 @@ export default function EscritorioSection() {
 
         {/* Parte 1: Escritório Físico (Layout Dividido com Galeria) */}
         <div className="office-section">
-          
+
           {/* Colagem de Fotos (Esquerda) */}
           <div className="office-gallery">
             <img src="/img/escritorio/sala.png" alt="Mesa de atendimento" className="gallery-img tall" />
@@ -19,16 +19,16 @@ export default function EscritorioSection() {
           <div className="office-info">
             <p className="subtitle">Venha conhecer o</p>
             <h2 className="section-title font-dupincel"><strong>ESCRITÓRIO FÍSICO</strong></h2>
-            
+
             <div className="address-block">
               {/* Ícone de Localização (Pin) */}
               <div className="location-icon">
                 <img src="/img/icon/location2.png" alt="Localização" className="social-icon" />
-              </div> 
+              </div>
               <div className="address-text">
                 <h3>Ribeirão das Neves / MG</h3>
                 <p>
-                  Av. Denise Cristina da Rocha, 1542 - São Januário (Justinópolis)<br/>
+                  Av. Denise Cristina da Rocha, 1542 - São Januário (Justinópolis)<br />
                   Ribeirão das Neves - MG, 33900-702
                 </p>
               </div>
@@ -44,19 +44,19 @@ export default function EscritorioSection() {
           </div>
 
           <div className="cards-grid">
-            
+
             {/* Card 1 */}
             <div className="specialty-image-card">
               <img src="/img/escritorio/direitoimobiliario.png" alt="Direito Civil Imobiliário" className="specialty-bg" />
               <div className="specialty-overlay"></div>
-              <h3 className="specialty-title">Direito Civil e<br/>Imobiliária</h3>
+              <h3 className="specialty-title">Direito Imobiliário</h3>
             </div>
 
             {/* Card 2 */}
             <div className="specialty-image-card">
               <img src="/img/escritorio/direitofamilia.png" alt="Direito de Família" className="specialty-bg" />
               <div className="specialty-overlay"></div>
-              <h3 className="specialty-title">Direito de Família e<br/>Sucessões</h3>
+              <h3 className="specialty-title">Direito de Família e<br />Sucessões</h3>
             </div>
 
             {/* Card 3 */}
@@ -64,6 +64,16 @@ export default function EscritorioSection() {
               <img src="/img/escritorio/direitopenal.png" alt="Direito Penal" className="specialty-bg" />
               <div className="specialty-overlay"></div>
               <h3 className="specialty-title">Direito Penal</h3>
+            </div>
+            <div className="specialty-image-card">
+              <img src="/img/escritorio/direitocivil.png" alt="Direito Penal" className="specialty-bg" />
+              <div className="specialty-overlay"></div>
+              <h3 className="specialty-title">Direito Civil</h3>
+            </div>
+            <div className="specialty-image-card">
+              <img src="/img/escritorio/direitortrabalhista.png" alt="Direito Penal" className="specialty-bg" />
+              <div className="specialty-overlay"></div>
+              <h3 className="specialty-title">Direito Trabalhista</h3>
             </div>
 
           </div>

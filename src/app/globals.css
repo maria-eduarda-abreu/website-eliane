@@ -1,5 +1,8 @@
 @import "tailwindcss";
 
+/* =========================================
+   0. FONTES E VARIÁVEIS
+   ========================================= */
 @font-face {
   font-family: "dupincel";
   src: url("/fonts/DupincelLargeTest-Bold.otf") format("opentype");
@@ -16,41 +19,35 @@
 }
 
 :root {
-  /* Paleta de Cores da Identidade Visual */
   --yellow: #FFC700;
   --gray: #383838;
   --whiteice: #F8FAFD;
   --background: #ffffff;
   --foreground: #000000;
-  /* Adicionado: O texto precisa de uma cor padrão no tema claro */
   --black: #000000;
 }
 
 /* =========================================
-   ESTILOS GERAIS E TIPOGRAFIA
+   1. ESTILOS GERAIS E TIPOGRAFIA
    ========================================= */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
-.container {
-  width: 100%;
-  max-width: 1200px; /* Limita a largura do conteúdo (ajuste se quiser mais largo ou estreito) */
-  margin: 0 auto;    /* A MÁGICA AQUI: O 'auto' nas laterais empurra a div para o centro exato */
-  padding: 0 20px;   /* Garante que o texto não cole nas bordas em telas de celular */
-}
 
 body {
   background: var(--background);
   color: var(--foreground);
-  align-items: center;
-  justify-content: center;
-  /* Se você tiver a fonte Poppins instalada/importada depois, substitua o Arial por ela aqui */
-
 }
 
-/* Aplicando a fonte elegante aos títulos para criar autoridade */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
 h1,
 h2,
 h3,
@@ -66,15 +63,16 @@ h4,
 }
 
 /* =========================================
-   ESTILOS DA NAVBAR E MENU (DESKTOP)
+   2. NAVBAR E MENU (DESKTOP)
    ========================================= */
 .navbar {
-  background-color: var(--background);
   padding: 1.5rem 2rem;
-  position: sticky;
+  position: fixed;
   top: 0;
-  z-index: 50;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  transition: background-color 0.4s ease, box-shadow 0.4s ease;
 }
 
 .nav-container {
@@ -83,9 +81,10 @@ h4,
   align-items: center;
   max-width: 1200px;
   margin: 0 auto;
+  position: relative;
+  /* Importante para ancorar o botão no mobile */
 }
 
-/* Tamanho da Logo no Desktop */
 .logo-img {
   width: 100%;
   max-width: 220px;
@@ -102,14 +101,9 @@ h4,
 
 .nav-menu a {
   text-decoration: none;
-  color: var(--black);
   font-weight: 600;
   font-size: 0.90rem;
   transition: color 0.3s ease;
-}
-
-.nav-menu a:hover {
-  color: var(--yellow);
 }
 
 .nav-social-icons {
@@ -117,14 +111,20 @@ h4,
   gap: 1rem;
   align-items: center;
   margin-left: 2rem;
-  /* Separa os ícones do resto do menu no desktop */
+}
+
+.social-icon-nav {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.3s ease;
 }
 
 /* =========================================
-   BOTÃO HAMBÚRGUER (Escondido no Desktop)
+   3. BOTÃO HAMBÚRGUER (BASE/DESKTOP)
    ========================================= */
 .nav-toggle {
   display: none;
+  /* Escondido no computador */
   flex-direction: column;
   justify-content: space-between;
   width: 30px;
@@ -132,20 +132,19 @@ h4,
   background: transparent;
   border: none;
   cursor: pointer;
-  z-index: 100;
-  /* Mantém o botão acima do menu lateral */
+  z-index: 1000;
+  /* Fica acima da gaveta do menu lateral */
 }
 
 .nav-toggle span {
   display: block;
   width: 100%;
   height: 3px;
-  background-color: var(--black);
   border-radius: 2px;
   transition: all 0.3s ease;
 }
 
-/* Efeito de transformar o Hambúrguer num "X" quando aberto */
+/* Efeito de "X" ao abrir o menu */
 .nav-toggle.active span:nth-child(1) {
   transform: translateY(9px) rotate(45deg);
 }
@@ -159,54 +158,120 @@ h4,
 }
 
 /* =========================================
-   LÓGICA PARA O MOBILE (Celular)
+   4. ESTADOS DE ROLAGEM DA NAVBAR
+   ========================================= */
+.navbar.transparent {
+  background-color: transparent;
+  box-shadow: none;
+}
+
+.navbar.transparent .nav-menu a {
+  color: var(--whiteice);
+}
+
+.navbar.transparent .social-icon-nav {
+  filter: brightness(0) invert(1);
+}
+
+.navbar.transparent .nav-toggle span {
+  background-color: var(--whiteice);
+}
+
+.navbar.scrolled {
+  background-color: var(--background);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+}
+
+.navbar.scrolled .nav-menu a {
+  color: var(--black);
+}
+
+.navbar.scrolled .social-icon-nav {
+  filter: none;
+}
+
+.navbar.scrolled .nav-toggle span {
+  background-color: var(--black);
+}
+
+/* Efeito Hover (Amarelo) */
+.nav-menu a:hover {
+  color: var(--yellow) !important;
+}
+
+.nav-social-icons a:hover .social-icon-nav {
+  filter: invert(74%) sepia(54%) saturate(3015%) hue-rotate(357deg) brightness(103%) contrast(105%) !important;
+}
+
+/* =========================================
+   5. COMPORTAMENTO EXCLUSIVO DO CELULAR (MOBILE)
    ========================================= */
 @media (max-width: 768px) {
-
-  /* Encolhe a Logo no celular */
   .logo-img {
     max-width: 150px;
   }
 
-  /* Mostra o botão hambúrguer */
+  /* O SEGREDO DO BOTÃO: Arranca ele do layout e fixa do lado direito */
   .nav-toggle {
-    display: flex;
+    display: flex !important;
+    position: absolute !important;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
   }
 
-  /* Estiliza o menu */
+  /* Gaveta Lateral do Menu */
   .nav-menu {
     position: fixed;
     top: 0;
     right: -100%;
-    width: 70%;
+    width: 75%;
     height: 100vh;
     background-color: var(--background);
     flex-direction: column;
     justify-content: flex-start;
     align-items: flex-start;
-    padding-left: 2rem;
-    padding-top: 10rem;
+    padding-left: 2.5rem;
+    padding-top: 8rem;
     transition: right 0.4s ease;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
     z-index: 99;
+    /* Fica abaixo do botão (1000) */
   }
-
 
   .nav-menu.active {
     right: 0;
-
   }
 
   .nav-menu li {
     margin: 0.2rem 0;
+    width: 100%;
   }
-
 
   .nav-social-icons {
     margin-left: 0;
     margin-top: 2rem;
   }
+
+  /* Garante que o texto fique legível no menu mobile mesmo quando no topo do site */
+  .navbar.transparent .nav-menu a {
+    color: var(--black) !important;
+  }
+
+  .navbar.transparent .social-icon-nav {
+    filter: none !important;
+  }
+
+  /* Garante a cor exata dos tracinhos no mobile de forma inquebrável */
+  .navbar.transparent button.nav-toggle span {
+    background-color: #ffffff !important;
+  }
+
+  .navbar.scrolled button.nav-toggle span {
+    background-color: #000000 !important;
+  }
 }
+
 
 /* =========================================
    ESTILOS DO FOOTER (RODAPÉ)
@@ -322,7 +387,8 @@ h4,
   font-size: 2.5rem;
   margin-bottom: 3rem;
   color: var(--black);
-  padding: 0 20px; /* Dá um respiro para o texto não colar nas bordas no celular */
+  padding: 0 20px;
+  /* Dá um respiro para o texto não colar nas bordas no celular */
 }
 
 .subtitle {
@@ -330,8 +396,10 @@ h4,
   color: var(--yellow);
   font-weight: bold;
   letter-spacing: 2px;
-  padding-left: 20px; /* Dá um respiro para o texto não colar nas bordas no celular */
+  padding-left: 20px;
+  /* Dá um respiro para o texto não colar nas bordas no celular */
 }
+
 .section-title.font-dupincel {
   font-family: "dupincel", serif;
   font-weight: bold;
@@ -345,8 +413,10 @@ h4,
 /* 1. O Wrapper define a altura da seção inicial */
 .hero-wrapper {
   position: relative;
-  min-height: 650px; /* Define uma altura robusta para o Hero aparecer bem */
-  height: 50vh;      /* Ocupa 85% da altura da tela do usuário */
+  min-height: 650px;
+  /* Define uma altura robusta para o Hero aparecer bem */
+  height: 100vh;
+  /* Ocupa 85% da altura da tela do usuário */
   display: flex;
   flex-direction: column;
   overflow: hidden;
@@ -360,7 +430,8 @@ h4,
   left: 0;
   width: 100%;
   height: 120%;
-  z-index: 0; /* Fica atrás de tudo */
+  z-index: 0;
+  /* Fica atrás de tudo */
 }
 
 /* Camada escura para dar contraste com o texto branco */
@@ -370,25 +441,27 @@ h4,
   left: 0;
   width: 100%;
   height: 0%;
-  background: rgba(0, 0, 0, 0.45); /* Escurece 45% da foto */
+  background: rgba(0, 0, 0, 0.45);
+  /* Escurece 45% da foto */
   z-index: 1;
 }
 
 /* 3. O CONTAINER DO CONTEÚDO */
 .hero-container {
   position: relative;
-  z-index: 2; /* Fica por cima da foto e do overlay */
+  z-index: 2;
+  /* Fica por cima da foto e do overlay */
   display: flex;
   align-items: center;
-  
+
   /* O PULO DO GATO 1: Empurra o bloco de conteúdo totalmente para o lado DIREITO */
-  justify-content: flex-end; 
-  
+  justify-content: flex-end;
+
   flex: 1;
   width: 100%;
 }
 
-.quote-marks{
+.quote-marks {
   position: absolute;
   color: var(--yellow);
   font-size: 4rem;
@@ -397,20 +470,22 @@ h4,
   left: -20px;
   width: 60px;
   height: 60px;
-  opacity: 0.15; /* Deixa as aspas bem suaves para não competir com o texto */
+  opacity: 0.15;
+  /* Deixa as aspas bem suaves para não competir com o texto */
 }
 
 /* 4. O BLOCO DE TEXTO E BOTÃO */
 .hero-content {
-  max-width: 550px; /* Limita a largura para o texto não espalhar pela tela toda */
+  max-width: 550px;
+  /* Limita a largura para o texto não espalhar pela tela toda */
   width: 100%;
   display: flex;
   flex-direction: column;
-  
+  margin-top: 30px;
   /* O PULO DO GATO 2: Força todos os itens (título, parágrafo, botão) a alinharem à ESQUERDA */
-  align-items: flex-start; 
-  text-align: left; 
-  
+  align-items: flex-start;
+  text-align: left;
+
   padding: 2rem 0;
 }
 
@@ -425,12 +500,14 @@ h4,
 
 /* Ajuste da sua linha vertical no tema escuro/fundo total */
 .linha-vertical {
-  border-left: 2px solid var(--yellow); /* Destaca a linha com o amarelo da identidade */
+  border-left: 2px solid var(--yellow);
+  /* Destaca a linha com o amarelo da identidade */
   padding-left: 15px;
   margin-left: 5px;
   margin-bottom: 2rem;
   line-height: 1.5;
-  color: #dddddd; /* Deixa o texto cinza claro para melhor leitura */
+  color: #dddddd;
+  /* Deixa o texto cinza claro para melhor leitura */
 }
 
 .btn-whatsapp {
@@ -454,9 +531,12 @@ h4,
   background-color: var(--black);
   padding: 3.5rem 0;
   width: 100%;
-  position: relative; /* Permite o uso do z-index */
-  z-index: 2;         /* Força a faixa preta a ficar por cima da foto de fundo */
+  position: relative;
+  /* Permite o uso do z-index */
+  z-index: 2;
+  /* Força a faixa preta a ficar por cima da foto de fundo */
 }
+
 .stats-container {
   display: flex;
   justify-content: space-around;
@@ -484,12 +564,54 @@ h4,
   font-family: "Aileron-", sans-serif;
   text-transform: lowercase;
 }
+
+/* =========================================
+   BOTÃO HAMBÚRGUER (Escondido no Desktop)
+   ========================================= */
+.nav-toggle {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 100;
+  /* Mantém o botão acima do menu lateral */
+}
+
+.nav-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  background-color: var(--black);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+}
+
+/* Efeito de transformar o Hambúrguer num "X" quando aberto */
+.nav-toggle.active span:nth-child(1) {
+  transform: translateY(9px) rotate(45deg);
+}
+
+.nav-toggle.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+  transform: translateY(-9px) rotate(-45deg);
+}
+
+
 /* =========================================
    TIMELINE (SOBRE MIM)
 ========================================= */
-.container.section-padding{
-  padding: 80px 0px 0px; /* Remove o padding extra do container para a timeline ocupar toda a largura possível */
+.container.section-padding {
+  padding: 80px 0px 0px;
+  /* Remove o padding extra do container para a timeline ocupar toda a largura possível */
 }
+
 .timeline {
   position: relative;
   max-width: 800px;
@@ -615,23 +737,27 @@ h4,
   margin-top: 30px;
 }
 
-.location-icon .social-icon{
+.location-icon .social-icon {
   width: 50px;
   height: 50px;
   object-fit: contain;
-  
+
 }
 
 .endpage {
   width: 100%;
-  margin-top: 0rem; /* Espaço entre o fim da timeline e a imagem */
+  margin-top: 0rem;
+  /* Espaço entre o fim da timeline e a imagem */
   overflow: hidden;
 }
 
 .endpage img {
-  width: 100%;      /* Força a imagem a ocupar 100% da largura da tela */
-  height: auto;     /* Mantém a proporção da imagem */
-  display: block;   /* Remove espaços em branco indesejados abaixo da imagem */
+  width: 100%;
+  /* Força a imagem a ocupar 100% da largura da tela */
+  height: auto;
+  /* Mantém a proporção da imagem */
+  display: block;
+  /* Remove espaços em branco indesejados abaixo da imagem */
 }
 
 
@@ -639,13 +765,20 @@ h4,
    PARTE 2: ESPECIALIDADES (CARDS COM FOTO)
    ========================================= */
 .cards-grid {
-  display: flex;             /* Transforma a div em um contêiner flexível (coloca lado a lado) */
-  justify-content: center;   /* Centraliza os três blocos no meio da tela */
-  gap: 30px;                 /* Espaçamento entre os cartões */
-  flex-wrap: wrap;           /* Permite que eles voltem a empilhar no celular */
-  margin-bottom: 4rem;       /* Dá um respiro embaixo da seção */
-  width: 100%;               /* Garante que ocupe o espaço inteiro para centralizar direito */
+  display: flex;
+  /* Transforma a div em um contêiner flexível (coloca lado a lado) */
+  justify-content: center;
+  /* Centraliza os três blocos no meio da tela */
+  gap: 30px;
+  /* Espaçamento entre os cartões */
+  flex-wrap: wrap;
+  /* Permite que eles voltem a empilhar no celular */
+  margin-bottom: 4rem;
+  /* Dá um respiro embaixo da seção */
+  width: 100%;
+  /* Garante que ocupe o espaço inteiro para centralizar direito */
 }
+
 .specialties-header {
   margin-bottom: 30px;
   text-align: left;
@@ -657,8 +790,9 @@ h4,
   width: 300px;
   height: 400px;
   border-radius: 25px;
-  overflow: hidden; 
-  box-shadow: 8px 8px 0px #FDF0D5; /* Sombra amarelinha do design */
+  overflow: hidden;
+  box-shadow: 8px 8px 0px #FDF0D5;
+  /* Sombra amarelinha do design */
 }
 
 /* Faz a imagem de fundo preencher o card */
@@ -679,7 +813,7 @@ h4,
   left: 0;
   width: 100%;
   height: 50%;
-  background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
   z-index: 2;
 }
 
@@ -730,27 +864,33 @@ h4,
   /* Como o texto saiu de cima da foto, mudamos a cor para escuro para dar leitura */
   .hero-quote {
     font-size: 2.2rem;
-    color: var(--whiteice) !important; 
-    text-shadow: none; /* Remove a sombra do desktop */
+    color: var(--whiteice) !important;
+    text-shadow: none;
+    /* Remove a sombra do desktop */
   }
 
   /* Estiliza a linha vertical como um divisor centralizado abaixo do texto */
   .linha-vertical {
     padding-left: 2;
     padding-bottom: 1px;
-    color: var(--whiteice); /* Deixa o texto da linha horizontal amarelo para destacar como no design */
+    color: var(--whiteice);
+    /* Deixa o texto da linha horizontal amarelo para destacar como no design */
     display: inline-block;
   }
+
   .quote-marks {
-    padding-left: 2px; /* Esconde as aspas decorativas no mobile para não competir com o texto */
+    padding-left: 2px;
+    /* Esconde as aspas decorativas no mobile para não competir com o texto */
   }
 
   /* 3. A FOTO DO HERO (Forçada a ir para o MEIO: Order 2) */
   .hero-image-full {
     order: 2;
-    position: relative; /* Muda de absolute para relative para empilhar */
+    position: relative;
+    /* Muda de absolute para relative para empilhar */
     width: 100%;
-    height: 350px;      /* Controla a altura ideal da foto no celular */
+    height: 350px;
+    /* Controla a altura ideal da foto no celular */
     display: block;
   }
 
@@ -770,83 +910,92 @@ h4,
     flex-direction: column;
     gap: 2.5rem;
   }
+
   /* Cole isso dentro do seu @media (max-width: 768px) existente */
   .office-section {
     flex-direction: column;
   }
+
   .office-info {
     order: 1;
-    
+
   }
-  
+
   .office-gallery {
     flex-direction: column;
     align-items: center;
     width: 100%;
   }
-  
-  .gallery-img.tall, 
-  .gallery-img.top, 
+
+  .gallery-img.tall,
+  .gallery-img.top,
   .gallery-img.bottom {
-    width: 100%; 
+    width: 100%;
     height: auto;
   }
+
   .contact-layout {
     flex-direction: column;
     gap: 3rem;
   }
-  
+
   .contact-form-column {
     max-width: 100%;
   }
 
   .subtitle.section-title.font-dupincel {
     text-align: left;
-    padding-left: 20px; /* Dá um respiro para o texto não colar na borda no celular */
+    padding-left: 20px;
+    /* Dá um respiro para o texto não colar na borda no celular */
   }
+
   /* =========================================
      TIMELINE (SOBRE MIM) - MOBILE
   ========================================= */
-  
+
   /* 1. Move a linha central amarela para a esquerda */
   .timeline::after {
-    left: 20px; 
+    left: 20px;
   }
 
   /* 2. Faz todos os blocos ocuparem 100% da largura */
   .timeline-item {
-    width: 100%; 
-    padding-left: 60px; /* Cria espaço à esquerda para a foto não colar na linha */
+    width: 100%;
+    padding-left: 60px;
+    /* Cria espaço à esquerda para a foto não colar na linha */
     padding-right: 15px;
   }
 
   /* 3. Tira o deslocamento e alinha o texto de todos para a esquerda */
-  .timeline-item.left, 
+  .timeline-item.left,
   .timeline-item.right {
-    left: 0; 
-    text-align: left; 
+    left: 0;
+    text-align: left;
   }
 
   /* 4. Move as bolinhas (nós) para ficarem em cima da linha na nova posição */
-  .timeline-item.left::after, 
+  .timeline-item.left::after,
   .timeline-item.right::after {
-    left: 10px; 
+    left: 10px;
   }
 
   /* 5. Garante que as fotos dentro da timeline também fiquem responsivas */
   .timeline-image {
     width: 100%;
-    max-width: 250px; /* Evita que a foto fique gigante no tablet */
+    max-width: 250px;
+    /* Evita que a foto fique gigante no tablet */
     height: auto;
-    margin-bottom: 15px; /* Dá um respiro entre a foto e o título */
+    margin-bottom: 15px;
+    /* Dá um respiro entre a foto e o título */
   }
-  
+
   /*  garante que empilhem direito no mobile */
   .timeline-item {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
+
   /* =========================================
      ESCRITÓRIO - INVERSÃO NO MOBILE
      ========================================= */
@@ -856,43 +1005,55 @@ h4,
   }
 
   .office-info {
-    order: 1; /* Força o bloco de texto a vir primeiro */
-    margin-bottom: 2.5rem; /* Dá um respiro entre o endereço e as fotos que vêm logo abaixo */
+    order: 1;
+    /* Força o bloco de texto a vir primeiro */
+    margin-bottom: 2.5rem;
+    /* Dá um respiro entre o endereço e as fotos que vêm logo abaixo */
     text-align: left;
   }
 
   .office-gallery {
-    order: 2; /* Força a galeria de fotos a vir depois */
+    order: 2;
+    /* Força a galeria de fotos a vir depois */
     width: 100%;
   }
 
   /* Aproveitando para centralizar o bloco de endereço no celular se alinhar o texto acima */
   .address-block {
-    justify-content: center; 
+    justify-content: center;
     text-align: left;
   }
+
   /* Transformando a grid de especialidades num carrossel horizontal */
   .cards-grid {
     display: flex;
-    flex-wrap: nowrap; /* Impede de quebrar a linha */
-    overflow-x: auto;  /* Permite rolar para o lado */
-    scroll-snap-type: x mandatory; /* Ativa o "imã" do carrossel */
-    justify-content: flex-start; /* Alinha no começo para poder rolar */
-    padding-bottom: 20px; /* Espaço para não cortar a sombra */
+    flex-wrap: nowrap;
+    /* Impede de quebrar a linha */
+    overflow-x: auto;
+    /* Permite rolar para o lado */
+    scroll-snap-type: x mandatory;
+    /* Ativa o "imã" do carrossel */
+    justify-content: flex-start;
+    /* Alinha no começo para poder rolar */
+    padding-bottom: 20px;
+    /* Espaço para não cortar a sombra */
     gap: 15px;
-    
+
     /* Esconde a barra de rolagem visualmente, mas mantém o scroll */
-    -ms-overflow-style: none;  
-    scrollbar-width: none;  
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
 
   .cards-grid::-webkit-scrollbar {
     display: none;
   }
 
-  .service-card, .specialty-image-card {
-    scroll-snap-align: center; /* O cartão para sempre no centro */
-    flex: 0 0 85%; /* O cartão ocupa 85% da tela, deixando um "pedacinho" do próximo visível */
+  .service-card,
+  .specialty-image-card {
+    scroll-snap-align: center;
+    /* O cartão para sempre no centro */
+    flex: 0 0 85%;
+    /* O cartão ocupa 85% da tela, deixando um "pedacinho" do próximo visível */
     max-width: none;
   }
 }
@@ -905,7 +1066,8 @@ h4,
   color: var(--black);
   margin-bottom: 2.5rem;
   font-family: 'Aileron-Light', sans-serif;
-  text-align: left; /* Alinha à esquerda como no design */
+  text-align: left;
+  /* Alinha à esquerda como no design */
 }
 
 .contact-title strong {
@@ -917,7 +1079,8 @@ h4,
 /* Container que divide em duas colunas */
 .contact-layout {
   display: flex;
-  gap: 6rem; /* Espaço grande entre o formulário e as redes sociais */
+  gap: 6rem;
+  /* Espaço grande entre o formulário e as redes sociais */
   justify-content: space-between;
 }
 
@@ -929,7 +1092,8 @@ h4,
 .contact-form {
   display: flex;
   flex-direction: column;
-  gap: 1.2rem; /* Espaçamento entre os inputs */
+  gap: 1.2rem;
+  /* Espaçamento entre os inputs */
 }
 
 /* O segredo do visual clean: sem borda, fundo branco e bem arredondado */
@@ -938,7 +1102,8 @@ h4,
   width: 100%;
   padding: 1.2rem 1.5rem;
   border: none;
-  border-radius: 40px; /* Bordas estilo "pílula" */
+  border-radius: 40px;
+  /* Bordas estilo "pílula" */
   background-color: white;
   font-family: inherit;
   font-size: 1rem;
@@ -947,8 +1112,10 @@ h4,
 }
 
 .contact-form textarea {
-  border-radius: 20px; /* Textarea fica melhor com borda um pouco menos curva */
-  resize: none; /* Impede o usuário de esticar a caixa, mantendo o design */
+  border-radius: 20px;
+  /* Textarea fica melhor com borda um pouco menos curva */
+  resize: none;
+  /* Impede o usuário de esticar a caixa, mantendo o design */
   min-height: 180px;
 }
 
@@ -969,7 +1136,8 @@ h4,
   cursor: pointer;
   border-radius: 40px;
   width: 100%;
-  text-transform: lowercase; /* Força o "enviar" em letras minúsculas */
+  text-transform: lowercase;
+  /* Força o "enviar" em letras minúsculas */
   font-family: 'Aileron-black', sans-serif;
   transition: opacity 0.3s ease;
   margin-top: 0.5rem;
@@ -980,17 +1148,24 @@ h4,
 }
 
 /* Animação suave para os botões */
-.btn-whatsapp, .btn-submit {
-  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); /* Efeito de "mola" */
+.btn-whatsapp,
+.btn-submit {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  /* Efeito de "mola" */
 }
 
-.btn-whatsapp:hover, .btn-submit:hover {
-  transform: translateY(-4px) scale(1.02); /* Sobe um pouquinho e cresce */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Cria uma sombra embaixo */
+.btn-whatsapp:hover,
+.btn-submit:hover {
+  transform: translateY(-4px) scale(1.02);
+  /* Sobe um pouquinho e cresce */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+  /* Cria uma sombra embaixo */
 }
 
-.btn-whatsapp:active, .btn-submit:active {
-  transform: translateY(0) scale(1); /* Volta ao normal ao clicar */
+.btn-whatsapp:active,
+.btn-submit:active {
+  transform: translateY(0) scale(1);
+  /* Volta ao normal ao clicar */
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -1030,4 +1205,72 @@ h4,
   height: 28px;
   object-fit: contain;
 }
+/* =========================================
+   BANNER DA PÁGINA ACERVO (TELA CHEIA)
+   ========================================= */
+.acervo-banner {
+  position: relative;
+  width: 100%;
+  height: 320px; 
+  /* Coloque o caminho correto da sua imagem aqui */
+  background-image: url('/img/fotos-eliane/banner-acervo.png'); 
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 80px; 
+}
+
+.acervo-banner-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6); 
+  z-index: 1;
+}
+
+/* O Z-INDEX 2 É O QUE PUXA O TEXTO PARA CIMA DA FOTO */
+.acervo-banner-container {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #ffffff; /* Força o texto a ficar branco */
+}
+
+.acervo-title {
+  font-size: 3.8rem;
+  color: var(--yellow); /* Deixa "Acervo" amarelo */
+  margin-bottom: 0.5rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.acervo-subtitle {
+  font-size: 1.2rem;
+  color: var(--whiteice);
+  opacity: 0.9;
+}
+
+/* =========================================
+   RESPONSIVIDADE DO BANNER (MOBILE)
+   ========================================= */
+@media (max-width: 768px) {
+  .acervo-banner {
+    height: 240px; /* Reduz a altura no celular para não ocupar a tela toda */
+    padding-top: 70px;
+  }
+
+  .acervo-title {
+    font-size: 2.6rem; /* Diminui a fonte para não quebrar linha no celular */
+  }
+
+  .acervo-subtitle {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+}
+
 /* Garanta que esta chave final } é a que encerra o bloco @media! */

@@ -2,40 +2,39 @@
 
 import { useState } from 'react';
 
-// Dados baseados no conteúdo original do acervo
+// Dados ajustados para corresponder exatamente aos botões de filtro (Plural)
 const itensAcervo = [
   {
     id: 1,
-    titulo: "Tendências em Direito Empresarial 2024",
-    categoria: "Artigos",
-    descricao: "Análise das principais transformações no direito empresarial e adaptações às novas regulamentações.",
-    data: "Janeiro de 2024",
-    link: "/acervo/documento de teste.pdf", // Exemplo usando seu arquivo existente
+    titulo: "Branquitude e Racismo na Ciência e na Educação em Ciências - Flavia Rezende, e Fernanda Ostermann",
+    categoria: "Artigos", // Corrigido de "Artigo" para "Artigos" para funcionar o filtro
+    descricao: "Neste artigo, elegemos reflexões sobre os conceitos de branquitude e racismo e sobre o racismo na ciência e na educação em ciências.",
+    data: "18 de julho de 2025",
+    link: "/acervo/BranquitudeRacismo.pdf",
     tipo: "Baixar PDF",
     download: true,
   },
   {
     id: 2,
-    titulo: "Resolução de Conflitos Comerciais",
+    titulo: "Como garantir a proteção de meninas e mulheres?",
     categoria: "Publicações",
-    descricao: "Estratégias modernas de resolução de conflitos publicadas em revista jurídica especializada.",
-    data: "Outubro de 2023",
-    link: "/acervo/documento de teste.pdf", // Exemplo usando seu arquivo existente
+    descricao: "Direito À vida segura e acesso à justiça.",
+    data: "Outubro de 2021",
+    link: "/acervo/direitomulher.pdf",
     tipo: "Baixar PDF",
     download: true
   },
   {
     id: 3,
-    titulo: "Case: Reestruturação Societária",
+    titulo: "Proteção e Promoção Social de Pessoas com Deficiência no Brasil",
     categoria: "Cases",
-    descricao: "Otimização da governança e redução de riscos legais em uma reestruturação estratégica.",
+    descricao: "uma abordagem a partir de indicadores sociais e relatos de casos.",
     data: "2023",
-    link: "/acervo/documento de teste.pdf", // Exemplo usando seu arquivo existente
+    link: "/acervo/pcd.pdf",
     tipo: "Baixar PDF",
     download: true,
     nota: "*Respeitando a confidencialidade e o código de ética da OAB"
   },
-  // Adicione aqui os outros itens do seu arquivo HTML original
 ];
 
 export default function AcervoPage() {
@@ -43,38 +42,50 @@ export default function AcervoPage() {
 
   const categorias = ["Todos", "Artigos", "Publicações", "Cases"];
 
-  const itensFiltrados = filtro === "Todos" 
-    ? itensAcervo 
+  const itensFiltrados = filtro === "Todos"
+    ? itensAcervo
     : itensAcervo.filter(item => item.categoria === filtro);
 
   return (
     <main className="acervo-page">
-      {/* Banner da Página */}
-      <section className="page-banner" style={{ backgroundColor: 'var(--whiteice)', padding: '4rem 0', textAlign: 'center' }}>
-        <div className="container">
-          <h1 className="font-dupincel" style={{ fontSize: '3rem', marginBottom: '1rem' }}>Acervo</h1>
-          <p style={{ color: 'var(--gray)' }}>Artigos, publicações e cases de sucesso da Dra. Eliane Santiago</p>
-        </div>
-      </section>
 
-      {/* Filtros */}
-      <section className="filter-section" style={{ padding: '2rem 0', textAlign: 'center' }}>
+      {/* =======================================================
+          1. BANNER COM FOTO DE FUNDO (Conectado com as classes do CSS)
+          ======================================================= */}
+      <div className="acervo-banner">
+        <div className="acervo-banner-overlay"></div>
+
+        <div className="container acervo-banner-container">
+          <h1 className="acervo-title font-dupincel">Acervo</h1>
+          <p className="acervo-subtitle font-aileron-light">
+            Artigos, publicações e casos de sucesso
+          </p>
+        </div>
+      </div>
+
+      {/* =======================================================
+          2. SEÇÃO DE FILTROS 
+          ======================================================= */}
+      <section className="filter-section" style={{ padding: '3rem 0 1rem 0', textAlign: 'center' }}>
         <div className="container">
           <div className="filter-buttons" style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             {categorias.map(cat => (
-              <button 
+              <button
                 key={cat}
                 onClick={() => setFiltro(cat)}
                 className={`filter-btn ${filtro === cat ? 'active' : ''}`}
                 style={{
-                  padding: '0.5rem 1.5rem',
-                  border: '1px solid var(--yellow)',
+                  padding: '0.6rem 1.8rem',
+                  border: '2px solid var(--yellow)',
                   backgroundColor: filtro === cat ? 'var(--yellow)' : 'transparent',
                   color: filtro === cat ? 'var(--black)' : 'var(--gray)',
                   cursor: 'pointer',
-                  fontWeight: 'bold',
-                  borderRadius: '4px',
-                  transition: '0.3s'
+                  fontWeight: '700',
+                  fontSize: '0.9rem',
+                  borderRadius: '50px',
+                  textTransform: 'uppercase',
+                  letterSpacing: '1px',
+                  transition: 'all 0.3s ease'
                 }}
               >
                 {cat}
@@ -84,47 +95,58 @@ export default function AcervoPage() {
         </div>
       </section>
 
-      {/* Grade de Conteúdo */}
-      <section className="archive-content" style={{ padding: '4rem 0' }}>
+      {/* =======================================================
+          3. SEÇÃO DOS CARDS / GRADE DE CONTEÚDO
+          ======================================================= */}
+      <section className="archive-content" style={{ padding: '3rem 0 6rem 0' }}>
         <div className="container">
-          <div className="archive-grid" style={{ 
-            display: 'grid', 
-            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', 
-            gap: '2rem' 
+          <div className="archive-grid" style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
+            gap: '2.5rem'
           }}>
             {itensFiltrados.map(item => (
               <article key={item.id} className="archive-item" style={{
-                padding: '2rem',
-                border: '1px solid #eee',
-                borderRadius: '8px',
+                padding: '2.5rem 2rem',
+                border: 'none',
+                backgroundColor: 'var(--whiteice)',
+                borderRadius: '20px',
                 display: 'flex',
                 flexDirection: 'column',
-                justifyContent: 'space-between'
+                justifyContent: 'space-between', /* <-- O ERRO ESTAVA AQUI */
+                boxShadow: '0 4px 15px rgba(0,0,0,0.03)',
+                transition: 'transform 0.3s ease'
               }}>
                 <div>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--yellow)', fontWeight: 'bold', textTransform: 'uppercase' }}>
+                  <span style={{ fontSize: '0.75rem', color: 'var(--yellow)', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '1px' }}>
                     {item.categoria}
                   </span>
-                  <h3 className="font-dupincel" style={{ margin: '1rem 0' }}>{item.titulo}</h3>
-                  <p style={{ fontSize: '0.9rem', color: 'var(--gray)', marginBottom: '1rem' }}>{item.descricao}</p>
-                  {item.nota && <p style={{ fontSize: '0.75rem', fontStyle: 'italic', marginBottom: '1rem' }}>{item.nota}</p>}
+                  <h3 className="font-dupincel" style={{ margin: '0.8rem 0', fontSize: '1.4rem', lineHeight: '1.3', color: 'var(--black)' }}>
+                    {item.titulo}
+                  </h3>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--gray)', lineHeight: '1.6', marginBottom: '1.5rem', fontFamily: 'Aileron-Light, sans-serif' }}>
+                    {item.descricao}
+                  </p>
+                  {item.nota && (
+                    <p style={{ fontSize: '0.75rem', color: '#888', fontStyle: 'italic', marginBottom: '1.5rem' }}>
+                      {item.nota}
+                    </p>
+                  )}
                 </div>
-                
-                <div style={{ marginTop: 'auto' }}>
-                  <p style={{ fontSize: '0.8rem', color: '#999', marginBottom: '1rem' }}>{item.data}</p>
-                  <a 
-                    href={item.link} 
+
+                <div style={{ marginTop: 'auto', display: 'flex', flexDirection: 'column', gap: '0.8rem' }}>
+                  <p style={{ fontSize: '0.8rem', color: '#aaa', margin: '0' }}>{item.data}</p>
+                  <a
+                    href={item.link}
                     download={item.download}
-                    className="btn-link"
+                    className="btn-submit"
                     style={{
-                      display: 'inline-block',
-                      padding: '0.6rem 1.2rem',
-                      backgroundColor: 'var(--black)',
-                      color: 'var(--whiteice)',
+                      display: 'block',
+                      padding: '1rem',
+                      fontSize: '0.95rem',
                       textDecoration: 'none',
-                      fontSize: '0.9rem',
-                      borderRadius: '4px',
-                      textAlign: 'center'
+                      textAlign: 'center',
+                      margin: '0'
                     }}
                   >
                     {item.tipo}
@@ -135,6 +157,7 @@ export default function AcervoPage() {
           </div>
         </div>
       </section>
-    </main>
+
+    </main >
   );
 }
