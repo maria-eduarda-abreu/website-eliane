@@ -1,58 +1,62 @@
-"use client";
+"use client"; // Necessário para controlar o estado da página
 
-import { useState } from 'react';
-import Link from 'next/link';
-import Image from 'next/image';
+import { useState, useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
 
 export default function Navbar() {
-    const [menuAberto, setMenuAberto] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+    const [menuActive, setMenuActive] = useState(false);
 
+    // Detecta a rolagem da página
+    useEffect(() => {
+        const handleScroll = () => {
+            if (window.scrollY > 50) {
+                setIsScrolled(true);
+            } else {
+                setIsScrolled(false);
+            }
+        };
+
+        window.addEventListener("scroll", handleScroll);
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
+
+    // Função para abrir/fechar o menu no botão hambúrguer
     const toggleMenu = () => {
-        setMenuAberto(!menuAberto);
+        setMenuActive(!menuActive);
     };
 
+    // AQUI ESTÁ A CORREÇÃO: Função para fechar o menu ao clicar em um link
     const fecharMenu = () => {
-        setMenuAberto(false);
+        setMenuActive(false);
     };
 
     return (
-        <nav className="navbar">
-            <div className="container nav-container">
+        <nav className={`navbar ${isScrolled ? "scrolled" : "transparent"}`}>
+            <div className="nav-container">
 
-                {/* Logo */}
-                <div className="nav-brand">
-                    <Link href="/" onClick={fecharMenu}>
-                        <Image
-                            src="/img/logo5.png"
-                            alt="Logo Dra. Eliane Santiago"
-                            width={250}
-                            height={70}
-                            priority
-                            className="logo-img" /* Classe importante para ajustar o tamanho */
-                        />
-                    </Link>
-                </div>
+                {/* LOGO */}
+                <Link href="/" className="logo" onClick={fecharMenu}>
+                    <Image
+                        src={isScrolled ? "/img/logo5.png" : "/img/logo5.png"}
+                        alt="Logo Dra. Eliane Santiago"
+                        width={200}
+                        height={60}
+                        className="logo-img"
+                    />
+                </Link>
 
-                {/* Botão Hambúrguer (Mobile) */}
-                <button
-                    className={`nav-toggle ${menuAberto ? 'active' : ''}`}
-                    onClick={toggleMenu}
-                    aria-label="Abrir menu"
-                >
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-
-                {/* Menu de Navegação */}
-                <ul className={`nav-menu ${menuAberto ? 'active' : ''}`}>
-                    <li><Link href="/#inicio" onClick={fecharMenu}>INÍCIO</Link></li>
-                    <li><Link href="/#sobre" onClick={fecharMenu}>SOBRE MIM</Link></li>
-                    <li><Link href="/#escritorio" onClick={fecharMenu}>ESCRITÓRIO</Link></li>
+                {/* MENU */}
+                <ul className={`nav-menu ${menuActive ? "active" : ""}`}>
+                    {/* Adicionado o onClick={fecharMenu} em todos os links */}
+                    <li><Link href="/" onClick={fecharMenu}>INÍCIO</Link></li>
+                    <li><Link href="#sobre" onClick={fecharMenu}>SOBRE MIM</Link></li>
+                    <li><Link href="#escritorio" onClick={fecharMenu}>ESCRITÓRIO</Link></li>
                     <li><Link href="/acervo" onClick={fecharMenu}>ACERVO</Link></li>
-                    <li><Link href="/#contato" onClick={fecharMenu}>CONTATO</Link></li>
+                    <li><Link href="#contato" onClick={fecharMenu}>CONTATO</Link></li>
 
-                    {/* Ícones das Redes Sociais */}
+                    {/* ÍCONES SOCIAIS NO MENU */}
                     <li className="nav-social-icons">
                         <a href="https://api.whatsapp.com/send?phone=5531999184087&text=Ol%C3%A1%2C%20Tudo%20bem!%0A" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
                             <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} />
@@ -74,6 +78,13 @@ export default function Navbar() {
                         </a>
                     </li>
                 </ul>
+
+                {/* BOTÃO HAMBÚRGUER (MOBILE) */}
+                <button className={`nav-toggle ${menuActive ? "active" : ""}`} onClick={toggleMenu}>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
 
             </div>
         </nav>

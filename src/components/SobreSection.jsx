@@ -25,7 +25,7 @@ export default function SobreSection() {
             <img src="/img/sobre/oab.png" alt="OAB" className="timeline-image" />
             <div className="timeline-content">
               <h3>Fundadora e Presidente da OAB (Ribeirão das Neves)</h3>
-              <p>Junto de mais 4 amigos instalamos a sede da OAB em Ribeirão das Neves. Pude ter a honra de liderar como presidente da subseção OAB Ribeirão das Neves por dois mandatos, entre 2013 e 2018, realizando uma gestão focada na valorização da classe, defesa das prerrogativas dos advogados e aproximação com a sociedade.</p>
+              <p>Junto de mais 4 amigos instalamos a sede da OAB em Ribeirão das Neves. Tive a honra de liderar como presidente a subseção OAB Ribeirão das Neves por dois mandatos, entre 2013 e 2018. Nos anos de 2019 à 2021 fui concelheira da OAB Estadual de Minas Gerais.</p>
             </div>
           </div>
 
@@ -34,7 +34,7 @@ export default function SobreSection() {
             <img src="/img/sobre/certificadooab.png" alt="OAB Ribeirão das Neves" className="timeline-image" />
             <div className="timeline-content">
               <h3>Reconhecimento Estadual (2015)</h3>
-              <p>Recebi um certificado por minha contribuição e trabalho árduo na entrega de mais de 200.000 certificados digitais aos advogados de todo o estado de Minas Gerais.</p>
+              <p>Recebi um certificado por minha contribuição e trabalho árduo na entrega de mais de 20.000 certificados digitais aos advogados de todo o estado de Minas Gerais.</p>
             </div>
           </div>
 
@@ -52,7 +52,7 @@ export default function SobreSection() {
             <img src="/img/sobre/deesportiva.png" alt="Auditora do TJD" className="timeline-image" />
             <div className="timeline-content">
               <h3>Auditora do TJD</h3>
-              <p>Possui forte atuação na área desportiva, tendo sido Auditora e Ex-presidente do Tribunal de Justiça Desportiva (TJD), zelando pela ética e cumprimento das regras do esporte.</p>
+              <p>Possuo forte atuação na área desportiva, tendo sido Auditora e Ex-presidente da liga disportiva de Ribeirão das neves, zelando pela ética e cumprimento das regras do esporte. Atualmente sou auditora da federal do TDJ da Federação mineira de Futebol.</p>
             </div>
           </div>
 
@@ -61,7 +61,7 @@ export default function SobreSection() {
             <img src="/img/sobre/mocomp.png" alt="Vice-presidente MOCOMP" className="timeline-image" />
             <div className="timeline-content">
               <h3>Vice-presidente do MOCOMP</h3>
-              <p>Atuação como Vice-presidente no ano de 2025 - associação de moradores do bairro Nova Pampulha onde implemento ações para trazer melhorias para a região.</p>
+              <p>Sou Vice-presidente e Diretora jurídica e social para o mandato de 2025 à 2028 - associação de moradores do bairro Nova Pampulha - Ribeirão das Neves, onde implemento ações para trazer melhorias para a região.</p>
             </div>
           </div>
 
@@ -79,7 +79,7 @@ export default function SobreSection() {
             <img src="/img/sobre/filhos.png" alt="Família" className="timeline-image" />
             <div className="timeline-content">
               <h3>Minha Base: A Família</h3>
-              <p>A força por trás da profissão. Mãe orgulhosa de Fernanda e Lucas, e avó coruja de Valentina, Júlia e Davi. É neles que encontro a inspiração diária para lutar pelo direito das famílias.</p>
+              <p>A força por trás da profissão. Mãe orgulhosa de Fernanda e Lucas, e avó coruja de Valentina, Júlia e Felipe. É neles que encontro a inspiração diária para lutar pelo direito das famílias.</p>
             </div>
           </div>
         </div>

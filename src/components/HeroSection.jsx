@@ -37,7 +37,7 @@ export default function HeroSection() {
       {/* IMAGEM DE FUNDO (Alterado aqui para ocupar a tela toda) */}
       <div className="hero-image-full">
         <Image 
-          src="/img/fotos-eliane/hero4.png" 
+          src="/img/fotos-eliane/hero02.png" 
           alt="Dra. Eliane Santiago" 
           fill
           priority
