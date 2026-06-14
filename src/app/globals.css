@@ -23,8 +23,8 @@
   --gray: #383838;
   --whiteice: #F8FAFD;
   --background: #ffffff;
-  --foreground: #000000;
-  --black: #000000;
+  --foreground: #0F0F11;
+  --black: #0B0D0F;
 }
 
 /* =========================================
@@ -348,8 +348,8 @@ h4,
 }
 
 /* =========================================
-   RESPONSIVIDADE DO FOOTER (MOBILE)
-   ========================================= */
+  RESPONSIVIDADE DO FOOTER (MOBILE)
+========================================= */
 @media (max-width: 768px) {
   .footer-content {
     flex-direction: column;
@@ -372,8 +372,8 @@ h4,
 }
 
 /* =========================================
-   ESTILOS GERAIS DE SEÇÃO
-   ========================================= */
+  ESTILOS GERAIS DE SEÇÃO
+========================================= */
 .section-padding {
   padding: 5rem 0;
 }
@@ -441,7 +441,7 @@ h4,
   left: 0;
   width: 100%;
   height: 0%;
-  background: rgba(0, 0, 0, 0.45);
+  background: #0B0D0F;
   /* Escurece 45% da foto */
   z-index: 1;
 }
@@ -453,10 +453,8 @@ h4,
   /* Fica por cima da foto e do overlay */
   display: flex;
   align-items: center;
-
   /* O PULO DO GATO 1: Empurra o bloco de conteúdo totalmente para o lado DIREITO */
   justify-content: flex-end;
-
   flex: 1;
   width: 100%;
 }
@@ -485,7 +483,6 @@ h4,
   /* O PULO DO GATO 2: Força todos os itens (título, parágrafo, botão) a alinharem à ESQUERDA */
   align-items: flex-start;
   text-align: left;
-
   padding: 2rem 0;
 }
 
@@ -851,6 +848,7 @@ h4,
     order: 1;
     position: relative;
     justify-content: left;
+    z-index: 2; 
     padding: 3rem 20px 2rem 20px;
   }
 
@@ -866,16 +864,15 @@ h4,
     font-size: 2.2rem;
     color: var(--whiteice) !important;
     text-shadow: none;
-    /* Remove a sombra do desktop */
+    margin-top: 30px;
   }
 
   /* Estiliza a linha vertical como um divisor centralizado abaixo do texto */
   .linha-vertical {
-    padding-left: 2;
     padding-bottom: 1px;
     color: var(--whiteice);
-    /* Deixa o texto da linha horizontal amarelo para destacar como no design */
     display: inline-block;
+    
   }
 
   .quote-marks {
@@ -883,6 +880,7 @@ h4,
     /* Esconde as aspas decorativas no mobile para não competir com o texto */
   }
 
+  /* APAGUE ESTE BLOCO INTEIRO DE DENTRO DO @MEDIA */
   /* 3. A FOTO DO HERO (Forçada a ir para o MEIO: Order 2) */
   .hero-image-full {
     order: 2;
@@ -894,10 +892,12 @@ h4,
     display: block;
   }
 
+  /* APAGUE ESTE BLOCO INTEIRO TAMBÉM */
   /* Oculta o overlay escuro no celular, já que o texto não está mais em cima da imagem */
   .hero-overlay {
     display: none;
   }
+
 
   /* 4. OS NÚMEROS E ESTATÍSTICAS (Forçados a ir para o FINAL: Order 3) */
   .hero-stats {
