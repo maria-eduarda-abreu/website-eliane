@@ -27,7 +27,7 @@ export default function Navbar() {
         setMenuActive(!menuActive);
     };
 
-    // AQUI ESTÁ A CORREÇÃO: Função para fechar o menu ao clicar em um link
+    // Função para fechar o menu ao clicar em um link
     const fecharMenu = () => {
         setMenuActive(false);
     };
@@ -39,7 +39,7 @@ export default function Navbar() {
                 {/* LOGO */}
                 <Link href="/" className="logo" onClick={fecharMenu}>
                     <Image
-                        src={isScrolled ? "/img/logo5.png" : "/img/logo5.png"}
+                        src="/img/logo5.png"
                         alt="Logo Dra. Eliane Santiago"
                         width={200}
                         height={60}
@@ -49,32 +49,31 @@ export default function Navbar() {
 
                 {/* MENU */}
                 <ul className={`nav-menu ${menuActive ? "active" : ""}`}>
-                    {/* Adicionado o onClick={fecharMenu} em todos os links */}
                     <li><Link href="/" onClick={fecharMenu}>INÍCIO</Link></li>
                     <li><Link href="#sobre" onClick={fecharMenu}>SOBRE MIM</Link></li>
                     <li><Link href="#escritorio" onClick={fecharMenu}>ESCRITÓRIO</Link></li>
                     <li><Link href="/acervo" onClick={fecharMenu}>ACERVO</Link></li>
                     <li><Link href="#contato" onClick={fecharMenu}>CONTATO</Link></li>
 
-                    {/* ÍCONES SOCIAIS NO MENU */}
+                    {/* ÍCONES SOCIAIS NO MENU (CORRIGIDOS COM A CLASSE) */}
                     <li className="nav-social-icons">
                         <a href="https://api.whatsapp.com/send?phone=5531999184087&text=Ol%C3%A1%2C%20Tudo%20bem!%0A" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} />
+                            <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} className="social-icon-nav" />
                         </a>
                         <a href="mailto:contato.draelianesantiago@gmail.com" onClick={fecharMenu}>
-                            <Image src="/img/icon/email.png" alt="Email" width={24} height={24} />
+                            <Image src="/img/icon/email.png" alt="Email" width={24} height={24} className="social-icon-nav" />
                         </a>
                         <a href="https://www.instagram.com/dra.elianesantiago/" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
+                            <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} className="social-icon-nav" />
                         </a>
                         <a href="https://www.youtube.com/@dra.elianesantiago" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/youtube.png" alt="YouTube" width={24} height={24} />
+                            <Image src="/img/icon/youtube.png" alt="YouTube" width={24} height={24} className="social-icon-nav" />
                         </a>
                         <a href="https://www.facebook.com/dra.elianesantiago?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/facebook.png" alt="Facebook" width={24} height={24} />
+                            <Image src="/img/icon/facebook.png" alt="Facebook" width={24} height={24} className="social-icon-nav" />
                         </a>
                         <a href="https://www.tiktok.com/@dra.elianesantiago?_t=8n73LGbvoSk&_r=1" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
-                            <Image src="/img/icon/tiktok.png" alt="TikTok" width={24} height={24} />
+                            <Image src="/img/icon/tiktok.png" alt="TikTok" width={24} height={24} className="social-icon-nav" />
                         </a>
                     </li>
                 </ul>
