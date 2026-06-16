@@ -37,7 +37,7 @@ export default function Footer() {
             <a href="https://instagram.com/dra.elianesantiago" target="_blank" rel="noopener noreferrer">
               <Image src="/img/icon/instagram.png" alt="Instagram" width={24} height={24} />
             </a>
-            <a href="mailto:contato.draelianesantiago@gmail.com">
+            <a href="mailto:contatoelianesantiago@gmail.com">
               <Image src="/img/icon/email.png" alt="Email" width={24} height={24} />
             </a>
             <a href="https://www.youtube.com/@dra.elianesantiago" target="_blank" rel="noopener noreferrer">
@@ -50,8 +50,8 @@ export default function Footer() {
               <Image src="/img/icon/tiktok.png" alt="TikTok" width={24} height={24} />
             </a>
           </div>
-          <a href="mailto:contato.draelianesantiago@gmail.com" className="footer-email">
-            contato.draelianesantiago@gmail.com
+          <a href="mailto:contatoelianesantiago@gmail.com" className="footer-email">
+            contatoelianesantiago@gmail.com
           </a>
           <p>(31) 9 9918-4087</p>
         </div>
