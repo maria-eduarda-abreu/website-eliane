@@ -90,10 +90,10 @@ export default function ContatoSection() {
                   <span>(31) 9 9918-4087</span>
                 </li>
               </a>
-              <a href="mailto:contato.draelianesantiago@gmail.com" target="_blank" rel="noopener noreferrer">
+              <a href="mailto:contatoelianesantiago@gmail.com" target="_blank" rel="noopener noreferrer">
                 <li>
                   <img src="/img/icon/email.png" alt="E-mail" className="social-icon" />
-                  <span>contato.draelianesantiago@gmail.com</span>
+                  <span>contatoelianesantiago@gmail.com</span>
                 </li>
               </a>
             </ul>

@@ -60,7 +60,7 @@ export default function Navbar() {
                         <a href="https://api.whatsapp.com/send?phone=5531999184087&text=Ol%C3%A1%2C%20Tudo%20bem!%0A" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
                             <Image src="/img/icon/whatsapp.png" alt="WhatsApp" width={24} height={24} className="social-icon-nav" />
                         </a>
-                        <a href="mailto:contato.draelianesantiago@gmail.com" onClick={fecharMenu}>
+                        <a href="mailto:contatoelianesantiago@gmail.com" onClick={fecharMenu}>
                             <Image src="/img/icon/email.png" alt="Email" width={24} height={24} className="social-icon-nav" />
                         </a>
                         <a href="https://www.instagram.com/dra.elianesantiago/" target="_blank" rel="noopener noreferrer" onClick={fecharMenu}>
